@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ji-Feng Tsai | Director, Co-Founder & IT Consultant</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                Fred Tsai
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-indigo-400 transition">About</a>
+                <a href="#roles" class="hover:text-indigo-400 transition">Expertise</a>
+                <a href="#skills" class="hover:text-indigo-400 transition">Tech Stack</a>
+                <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
+                <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/jiowcl" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://blog.inwazy.com" target="_blank" class="text-slate-300 hover:text-cyan-400 text-lg transition" title="Blog"><i class="fas fa-blog"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-darkbg to-darkbg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                Senior Manager & IT Solution Consultant
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                Ji-Feng Tsai
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-300 font-medium mb-6">
+                @jiowcl
+            </p>
+            
+            <!-- Professional Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Director</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Co-Founder</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Author</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Lecturer</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Senior Developer</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">IT Consultant</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Specializing in IT consulting services, enterprise AI solutions, and engineering team leadership. Combining hands-on backend design with technical lecturing and writing to drive digital transformation.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                    View Featured Projects
+                </a>
+                <a href="https://blog.inwazy.com" target="_blank" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                    Read Tech Blog
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-center">About Me</h2>
+            <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl shadow-xl leading-relaxed text-slate-300 space-y-4">
+                <p>
+                    I am **Ji-Feng (Fred) Tsai**, a Senior Manager, Director, and Co-Founder at an IT solution company based in Taiwan. I specialize in enterprise-grade software architecture, IT consultancy, and AI-driven product innovation.
+                </p>
+                <p>
+                    Beyond executive management and system integration, I am an active **Author** and **Lecturer**, regularly sharing technology insights, industry best practices, and technical tutorials on my blog. My primary development focus spans C/C++, Basic (PureBasic/FreeBasic), C# .NET, Java Spring Boot, Go (Golang), and next-generation AI Retrieval-Augmented Generation (RAG) applications using Semantic Kernel and vector databases (Qdrant, sqlite-vec).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise & Roles Section -->
+    <section id="roles" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Areas of Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">IT Leadership & Strategy</h3>
+                    <p class="text-sm text-slate-400">Leading product engineering teams, managing resource allocation, and delivering enterprise software projects aligned with strategic business goals.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Lecturer & Author</h3>
+                    <p class="text-sm text-slate-400">Passionate about tech evangelism, teaching, and writing, helping developers and enterprises adopt cutting-edge AI and backend architectures.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">IT Consulting & Solutions</h3>
+                    <p class="text-sm text-slate-400">Providing digital transformation advisory, enterprise AI chatbot (PureChatBot) implementation, and cross-platform API integration planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="skills" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Core Tech Stack</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Backend Development -->
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Backend & Architecture</h3>
+                    <p class="text-sm text-slate-400 mb-4">Polyglot backend engineering for high-performance enterprise systems.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">C# / .NET</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Java Spring Boot</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Go (Golang)</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Worker Services</span>
+                    </div>
+                </div>
+                <!-- AI & Vector DB -->
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">AI & Vector Search</h3>
+                    <p class="text-sm text-slate-400 mb-4">Enterprise AI conversational agents and RAG system integration.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Semantic Kernel</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Qdrant</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">sqlite-vec</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">ONNX Embeddings</span>
+                    </div>
+                </div>
+                <!-- DevOps & Web -->
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">DevOps & Frontend</h3>
+                    <p class="text-sm text-slate-400 mb-4">Server administration, web application deployment, and CI/CD workflows.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Linux / Bash</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Tomcat / PM2</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Next.js</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Git / GitLab</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Featured Open-Source Projects</h2>
+            <p class="text-slate-400 text-center mb-12">Selected developer tools and open-source repositories</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Zeron -->
+                <div class="bg-cardbg border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-indigo-500/50 transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-white">Zeron</h3>
+                            <a href="https://github.com/jiowcl/Zeron" target="_blank" class="text-slate-400 hover:text-white transition" title="View Repository"><i class="fab fa-github text-xl"></i></a>
+                        </div>
+                        <p class="text-slate-300 mb-6 leading-relaxed">
+                            Driven by NetMQ (ZeroMQ), Zeron empowers SMB IT teams and developers to control systems, deploy software, and build task pipelines via clean JSON-RPC APIs.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between text-sm font-medium pt-4 border-t border-slate-800">
+                        <span class="text-indigo-400"><i class="fas fa-cube mr-1.5"></i>Modular Tooling</span>
+                        <a href="https://github.com/jiowcl/Zeron" target="_blank" class="text-slate-400 hover:text-indigo-400 transition">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+                <!-- Vyrn -->
+                <div class="bg-cardbg border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-indigo-500/50 transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-white">Vyrn</h3>
+                            <a href="https://github.com/jiowcl/Vyrn" target="_blank" class="text-slate-400 hover:text-white transition" title="View Repository"><i class="fab fa-github text-xl"></i></a>
+                        </div>
+                        <p class="text-slate-300 mb-6 leading-relaxed">
+                            Vyrn is a concise, lightweight programming language designed for small-scale applications and embedded scripting. Built entirely in PureBasic, it brings the familiar elegance of Lua while evolving its own unique language characteristics.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between text-sm font-medium pt-4 border-t border-slate-800">
+                        <span class="text-cyan-400"><i class="fas fa-code-branch mr-1.5"></i>Developer Utilities</span>
+                        <a href="https://github.com/jiowcl/Vyrn" target="_blank" class="text-slate-400 hover:text-cyan-400 transition">View on GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+            <p class="text-slate-400 mb-8">Interested in IT consulting, keynote speaking, lecturing, or technical collaborations? Feel free to reach out:</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:jiowcl@gmail.com" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-envelope text-indigo-400"></i>
+                    <span>jiowcl@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/jiowcl" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fab fa-linkedin text-indigo-400"></i>
+                    <span>LinkedIn Profile</span>
+                </a>
+                <a href="https://blog.inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-blog text-cyan-400"></i>
+                    <span>Tech Blog</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        <p>&copy; <span id="year"></span> Ji-Feng Tsai. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
