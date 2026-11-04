@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="ThinBasic.NET — .NET wrapper for the ThinBasic scripting engine (thinCore.dll). Embed scripts, inject host keywords, parse callbacks, arrays, isolation, hash tables, and module classes.">
+    <meta name="keywords" content="ThinBasic.NET, ThinBasic, thinCore, .NET, NuGet, scripting, C#, wrapper, jiowcl">
+    <meta name="author" content="Ji-Feng Tsai">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ThinBasic.NET — .NET Wrapper for ThinBasic">
+    <meta property="og:description" content="Embed ThinBasic scripts in .NET apps. Host keywords, parser helpers, arrays, isolation, hash tables, and module classes.">
+    <meta property="og:url" content="https://github.com/jiowcl/ThinBasic.NET">
+    <meta property="og:site_name" content="ThinBasic.NET">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ThinBasic.NET — Embed ThinBasic in .NET">
+    <meta name="twitter:description" content=".NET wrapper for thinCore.dll: scripts, host keywords, parser, arrays, isolation, hash, and classes.">
+    <meta name="twitter:creator" content="@jiowcl">
+
+    <title>ThinBasic.NET | .NET Wrapper for ThinBasic Scripting Engine</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com" data-cfasync="false"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script data-cfasync="false">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ThinBasic.NET",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "description": ".NET wrapper for the ThinBasic scripting engine (thinCore.dll). Embed scripts, inject host keywords, and more.",
+      "url": "https://github.com/jiowcl/ThinBasic.NET",
+      "author": {
+        "@type": "Person",
+        "name": "Ji-Feng Tsai",
+        "url": "https://inwazy.com"
+      },
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                ThinBasic.NET
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                <a href="#api" class="hover:text-indigo-400 transition">API</a>
+                <a href="#example" class="hover:text-indigo-400 transition">Example</a>
+                <a href="#notes" class="hover:text-indigo-400 transition">Notes</a>
+                <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="NuGet"><i class="fas fa-cube"></i></a>
+                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-darkbg to-darkbg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                Embed · Host · Script
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                ThinBasic.NET
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-300 font-medium mb-6">
+                .NET Wrapper for the ThinBasic Scripting Engine
+            </p>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">thinCore.dll</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">.NET 8 / 9 / 10</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Windows x86</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">NuGet</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Host Keywords</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">MIT License</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Embed ThinBasic scripts in .NET apps, inject host constants and keywords, parse callback arguments, 
+                work with arrays, isolation, hash tables, and module classes — all through a clean C# API.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                    <i class="fas fa-cube mr-2"></i>Install from NuGet
+                </a>
+                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">What You Can Do</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Embed Scripts</h3>
+                    <p class="text-sm text-slate-400">Init the engine, run <code class="text-slate-300">.tbasic</code> buffers or files, and release cleanly from any .NET host.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Host Keywords</h3>
+                    <p class="text-sm text-slate-400">Register managed delegates as ThinBasic symbols — numbers, strings, and full parser callbacks.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Equates &amp; Variables</h3>
+                    <p class="text-sm text-slate-400">Inject constants and variables from the host; read and change script-side state at runtime.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Arrays &amp; Direct Access</h3>
+                    <p class="text-sm text-slate-400">Inspect arrays, redim, and use direct variable pointers for high-performance host integration.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Isolation Mode</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">InitIsolated</code> extracts modules into a dedicated directory — ideal for sandboxed hosts.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Classes &amp; Hash Tables</h3>
+                    <p class="text-sm text-slate-400">Register module classes with methods/properties, plus thinCore string hash table APIs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Surface -->
+    <section id="api" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">API Surface</h2>
+            <p class="text-slate-400 text-center mb-12">High-level coverage of thinCore.dll</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300">Lifecycle</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Init</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">InitIsolated</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">InitCheckScript</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Run</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Release</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">AddIncludePath</span>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300">Host Data &amp; Keywords</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">AddEquate</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">AddVariable</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">LoadSymbol / Ex</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">AllocReturnString</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">ClearSymbolCallbacks</span>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-emerald-300">Parser</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">CheckOpen/CloseParens</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">CheckComma</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">ParseNumber / String</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">PutBack</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">GetToken</span>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300">Arrays · Isolation · Hash · Classes</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">ArrayGet* / Redim</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">IsIsolated</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">HashNew / Set / Get</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">ClassAdd / Method / Property</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">ParseClass</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Example -->
+    <section id="example" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Quick Start</h2>
+            <p class="text-slate-400 text-center mb-10">Init · inject host symbols · run script · release</p>
+            
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>Program.cs</span>
+                    <span class="text-xs text-slate-500">C# · x86</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-indigo-400">using</span> ThinBasic.NET.Core;
+
+<span class="text-cyan-300">int</span> h = Thinbasic.Init(<span class="text-amber-300">0</span>, <span class="text-amber-300">0</span>, <span class="text-emerald-300">"thinbasic"</span>);
+<span class="text-indigo-400">if</span> (h != <span class="text-amber-300">0</span>)
+{
+    Console.WriteLine(<span class="text-emerald-300">"Init failed: "</span> + Thinbasic.GetLastError());
+    <span class="text-indigo-400">return</span>;
+}
+
+Thinbasic.AddEquate(<span class="text-emerald-300">"%HOST_EQ"</span>, string.Empty, <span class="text-amber-300">7</span>, (<span class="text-cyan-300">int</span>)Enums.EquateType.Number);
+
+<span class="text-cyan-300">int</span> hostCalls = <span class="text-amber-300">0</span>;
+Thinbasic.LoadSymbol(<span class="text-emerald-300">"HostFlag"</span>, () =&gt; hostCalls++, Enums.ForceOverWrite);
+Thinbasic.LoadSymbol(<span class="text-emerald-300">"HostNum"</span>, () =&gt; <span class="text-amber-300">123.5</span>, Enums.ForceOverWrite);
+Thinbasic.LoadSymbol(<span class="text-emerald-300">"HostStr$"</span>, () =&gt; Thinbasic.AllocReturnString(<span class="text-emerald-300">"hello"</span>), Enums.ForceOverWrite);
+
+<span class="text-cyan-300">string</span> script = File.ReadAllText(<span class="text-emerald-300">@"Sample\test.tbasic"</span>, Encoding.UTF8);
+<span class="text-cyan-300">int</span> result = Thinbasic.Run(
+    h, script, (<span class="text-cyan-300">int</span>)Enums.BufferType.IsScript,
+    <span class="text-amber-300">0</span>, <span class="text-amber-300">0</span>, <span class="text-amber-300">0</span>, <span class="text-amber-300">0</span>,
+    (<span class="text-cyan-300">int</span>)Enums.CallingProgram.Console, <span class="text-amber-300">0</span>);
+
+<span class="text-cyan-300">int</span> lastError = Thinbasic.GetLastError();
+Thinbasic.Release(h);
+Thinbasic.ClearSymbolCallbacks();</code></pre>
+            </div>
+
+            <div class="mt-8 bg-cardbg border border-slate-800 rounded-2xl overflow-hidden">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-function mr-2 text-cyan-400"></i>Parser callback</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code>Thinbasic.LoadSymbol(<span class="text-emerald-300">"HostAdd"</span>, () =&gt;
+{
+    <span class="text-indigo-400">if</span> (Thinbasic.CheckOpenParensMandatory() == <span class="text-amber-300">0</span>) <span class="text-indigo-400">return</span> <span class="text-amber-300">0</span>;
+    Thinbasic.ParseNumber(<span class="text-indigo-400">out double</span> a);
+    <span class="text-indigo-400">if</span> (Thinbasic.CheckCommaMandatory() == <span class="text-amber-300">0</span>) <span class="text-indigo-400">return</span> <span class="text-amber-300">0</span>;
+    Thinbasic.ParseNumber(<span class="text-indigo-400">out double</span> b);
+    <span class="text-indigo-400">if</span> (Thinbasic.CheckCloseParensMandatory() == <span class="text-amber-300">0</span>) <span class="text-indigo-400">return</span> <span class="text-amber-300">0</span>;
+    <span class="text-indigo-400">return</span> a + b;
+}, Enums.ForceOverWrite);</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Notes -->
+    <section id="notes" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Important Notes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Windows x86 Only</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">Bundled <code class="text-slate-300">thinCore.dll</code> is 32-bit. Target <code class="text-slate-300">PlatformTarget=x86</code> (or Prefer 32-bit). x64/Arm64 cannot load the native DLLs.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">ANSI BSTR Strings</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">thinCore uses ANSI BSTRs. Prefer ASCII / system-ANSI-safe text. Return strings with <code class="text-slate-300">AllocReturnString</code> — do not free them yourself.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                            <i class="fas fa-hand-holding"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Callback Lifetime</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">Delegates passed to <code class="text-slate-300">LoadSymbol</code> stay rooted until <code class="text-slate-300">ClearSymbolCallbacks()</code>. Call it only when no script can still invoke those keywords.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Runtime Errors</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">Script errors may show a thinBasic dialog and leave engine state sticky. Prefer validating scripts; avoid relying on failed <code class="text-slate-300">Run</code> in long-lived hosts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started -->
+    <section id="get-started" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Get Started</h2>
+            <p class="text-slate-400 text-center mb-12">NuGet install · build · examples</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300"><i class="fas fa-cube mr-2"></i>NuGet</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code>Install-Package ThinBasic.NET
+
+# or
+dotnet add package ThinBasic.NET</code></pre>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300"><i class="fas fa-hammer mr-2"></i>Build &amp; Test</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code>dotnet build ThinBasic.NET\ThinBasic.NET.csproj -c Release -p:Platform=x86
+dotnet test ThinBasic.NETTests\ThinBasic.NETTests.csproj -c Release -p:Platform=x86</code></pre>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-emerald-300"><i class="fas fa-play mr-2"></i>Examples</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code>dotnet run --project ThinBasic.Example -c Release -p:Platform=x86 -- embed
+# host | parser | array | isolated | hash | class</code></pre>
+                </div>
+            </div>
+
+            <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 text-center">
+                <p class="text-sm text-slate-400 mb-2">Requirements</p>
+                <p class="text-slate-300">
+                    Windows 10+ · <strong>x86 only</strong> · .NET 8 / 9 / 10 (windows) · ships thinCore.dll + thinBasic_UI.dll (ThinBasic 1.14 era)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Script from .NET</h2>
+            <p class="text-slate-400 mb-8">Install the package, target Windows x86, and embed ThinBasic in your host application in minutes.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                    <i class="fas fa-cube"></i>
+                    <span>NuGet Package</span>
+                </a>
+                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fab fa-github text-indigo-400"></i>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://www.thinbasic.com/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-cyan-400"></i>
+                    <span>ThinBasic Official</span>
+                </a>
+                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-globe text-cyan-400"></i>
+                    <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        <p class="mb-2">
+            <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="hover:text-indigo-400 transition">ThinBasic.NET</a>
+            · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
+        </p>
+        <p class="mb-2 text-slate-600">
+            ThinBasic Copyright © Eros Olmi · <a href="https://github.com/ThinBASIC" target="_blank" class="hover:text-cyan-400 transition">ThinBASIC Interpreter</a>
+        </p>
+        <p>
+            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
