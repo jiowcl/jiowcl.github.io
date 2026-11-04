@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="CometTextel — A modern C++23 library for GSM SMS over serial. Clean serial abstraction, GSM 03.40 PDU encode/decode, and AT-command helpers.">
+    <meta name="keywords" content="CometTextel, GSM, SMS, PDU, C++, modem, serial, AT commands, CMake, C++23, jiowcl">
+    <meta name="author" content="Ji-Feng Tsai">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CometTextel — Modern C++ Library for GSM SMS over Serial">
+    <meta property="og:description" content="Tiny, elegant, and practical. Send and receive SMS through a GSM modem with C++23, CMake, and multi-language bindings.">
+    <meta property="og:url" content="https://github.com/jiowcl/CometTextel">
+    <meta property="og:site_name" content="CometTextel">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CometTextel — GSM SMS over Serial">
+    <meta name="twitter:description" content="A modern C++23 library for GSM SMS: PDU codec, serial layer, modem helpers, and multi-language SDKs.">
+    <meta name="twitter:creator" content="@jiowcl">
+
+    <title>CometTextel | Modern C++ Library for GSM SMS over Serial</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com" data-cfasync="false"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script data-cfasync="false">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CometTextel",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, Linux, macOS",
+      "description": "A modern C++23 library for sending and receiving GSM SMS over serial, with PDU codec and multi-language bindings.",
+      "url": "https://github.com/jiowcl/CometTextel",
+      "author": {
+        "@type": "Person",
+        "name": "Ji-Feng Tsai",
+        "url": "https://inwazy.com"
+      },
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                CometTextel
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                <a href="#bindings" class="hover:text-indigo-400 transition">Bindings</a>
+                <a href="#example" class="hover:text-indigo-400 transition">Example</a>
+                <a href="#build" class="hover:text-indigo-400 transition">Build</a>
+                <a href="#history" class="hover:text-indigo-400 transition">History</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-darkbg to-darkbg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                Tiny · Elegant · Practical
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                CometTextel
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-300 font-medium mb-6">
+                Modern C++ Library for GSM SMS over Serial
+            </p>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">C++23</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">CMake</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">GSM 03.40 PDU</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Serial / AT</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">C ABI · .NET · Python</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">MIT License</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Concise and lightweight. Send and receive short messages through a GSM modem with a clean serial abstraction, 
+                full PDU encode/decode, and AT-command helpers — ready as shared or static library.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+                <a href="#example" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                    See API Example
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Cross-Platform Serial</h3>
+                    <p class="text-sm text-slate-400">Unified <code class="text-slate-300">SerialPort</code> API with Win32 and POSIX backends — Windows, Linux, macOS.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">GSM PDU Codec</h3>
+                    <p class="text-sm text-slate-400">7-bit, 8-bit, and UCS-2 encode/decode. Concatenated SMS, UDH, status reports — no MFC or legacy globals.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Modem Helpers</h3>
+                    <p class="text-sm text-slate-400">Initialize, send (<code class="text-slate-300">AT+CMGS</code>), list (<code class="text-slate-300">AT+CMGL</code>), delete (<code class="text-slate-300">AT+CMGD</code>) in PDU mode.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Modern C++23</h3>
+                    <p class="text-sm text-slate-400">RAII handles, <code class="text-slate-300">std::error_code</code>, <code class="text-slate-300">std::span</code>, and clear public headers under <code class="text-slate-300">include/comettextel/</code>.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Shared &amp; Static</h3>
+                    <p class="text-sm text-slate-400">Build as DLL/shared library and/or static archive from one CMake tree. <code class="text-slate-300">find_package</code> ready.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Multi-Language</h3>
+                    <p class="text-sm text-slate-400">Stable C ABI with bindings for C#, Python, PureBasic, FreeBASIC — plus native C/C++.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bindings / Ecosystem -->
+    <section id="bindings" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Language Bindings &amp; Packages</h2>
+            <p class="text-slate-400 text-center mb-12">One native library, many frontends</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">C / C++</h3>
+                    <p class="text-sm text-slate-400">Native headers + stable C ABI (<code class="text-slate-300">c_api.h</code>). Shared/static libs for Windows &amp; Linux.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fab fa-microsoft"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">.NET / NuGet</h3>
+                    <p class="text-sm text-slate-400">CometTextel.NET with win-x64 + linux-x64 RID natives. P/Invoke over the C ABI.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Python</h3>
+                    <p class="text-sm text-slate-400">Thin ctypes FFI. PDU + modem APIs. Wheels built in CI for Windows and Linux.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">PureBasic</h3>
+                    <p class="text-sm text-slate-400">Runtime-load DLL samples for PDU encode/decode and modem send/list/delete.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">FreeBASIC</h3>
+                    <p class="text-sm text-slate-400">Same C ABI surface — PDU and modem examples with local verify scripts.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">CI Artifacts</h3>
+                    <p class="text-sm text-slate-400">Windows/Linux packages, C SDK zips, Python wheels, NuGet nupkg — every push to main.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Example -->
+    <section id="example" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">API Example</h2>
+            <p class="text-slate-400 text-center mb-10">Open a modem, send a UCS-2 SMS in a few lines</p>
+            
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>main.cpp</span>
+                    <span class="text-xs text-slate-500">C++23</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-indigo-400">#include</span> <span class="text-emerald-300">"comettextel/comettextel.hpp"</span>
+<span class="text-indigo-400">#include</span> <span class="text-emerald-300">&lt;iostream&gt;</span>
+
+<span class="text-cyan-300">int</span> main()
+{
+    comettextel::GsmModem modem;
+    comettextel::SerialConfig config;
+    config.baud_rate = <span class="text-amber-300">115200</span>;
+
+    <span class="text-indigo-400">if</span> (<span class="text-cyan-300">const auto</span> ec = modem.open_and_init(<span class="text-emerald-300">"COM3"</span>, config); ec) {
+        std::cerr &lt;&lt; <span class="text-emerald-300">"open/init failed: "</span> &lt;&lt; ec.message() &lt;&lt; <span class="text-emerald-300">'\n'</span>;
+        <span class="text-indigo-400">return</span> <span class="text-amber-300">1</span>;
+    }
+
+    comettextel::Message message;
+    message.service_center = <span class="text-emerald-300">"886932000000"</span>;
+    message.peer_address   = <span class="text-emerald-300">"886912345678"</span>;
+    message.coding         = comettextel::DataCoding::Ucs2;
+    message.user_data      = <span class="text-emerald-300">"Hello from CometTextel"</span>;
+
+    <span class="text-indigo-400">if</span> (<span class="text-cyan-300">const auto</span> ec = modem.send_message(message); ec) {
+        std::cerr &lt;&lt; <span class="text-emerald-300">"send failed: "</span> &lt;&lt; ec.message() &lt;&lt; <span class="text-emerald-300">'\n'</span>;
+        <span class="text-indigo-400">return</span> <span class="text-amber-300">2</span>;
+    }
+    <span class="text-indigo-400">return</span> <span class="text-amber-300">0</span>;
+}</code></pre>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div class="bg-cardbg border border-slate-800 rounded-xl p-4">
+                    <span class="text-cyan-400 font-medium"><i class="fas fa-paper-plane mr-2"></i>Send</span>
+                    <pre class="mt-2 text-slate-400 overflow-x-auto"><code>comettextel_send_example COM3 886932000000 886912345678 "Hello"</code></pre>
+                </div>
+                <div class="bg-cardbg border border-slate-800 rounded-xl p-4">
+                    <span class="text-emerald-400 font-medium"><i class="fas fa-inbox mr-2"></i>List / Receive</span>
+                    <pre class="mt-2 text-slate-400 overflow-x-auto"><code>comettextel_list_example COM3
+comettextel_receive_example COM3</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Build & CI -->
+    <section id="build" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Build &amp; Integrate</h2>
+            <p class="text-slate-400 text-center mb-12">CMake 3.28+ · C++23 (MSVC 19.4x+ / GCC 14+ / Clang 18+)</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300"><i class="fas fa-hammer mr-2"></i>Build</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code>cmake -S . -B build -A x64
+cmake --build build --config Release
+ctest --test-dir build -C Release --output-on-failure</code></pre>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300"><i class="fas fa-link mr-2"></i>Consumer (find_package)</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code>find_package(comettextel 1.0 REQUIRED CONFIG)
+target_link_libraries(app PRIVATE
+    comettextel::comettextel)</code></pre>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 text-center text-xs">
+                <div class="bg-cardbg border border-slate-800 rounded-lg px-3 py-3 text-slate-300">Shared / Static</div>
+                <div class="bg-cardbg border border-slate-800 rounded-lg px-3 py-3 text-slate-300">Examples</div>
+                <div class="bg-cardbg border border-slate-800 rounded-lg px-3 py-3 text-slate-300">Unit Tests</div>
+                <div class="bg-cardbg border border-slate-800 rounded-lg px-3 py-3 text-slate-300">C ABI</div>
+                <div class="bg-cardbg border border-slate-800 rounded-lg px-3 py-3 text-slate-300">Doxygen</div>
+                <div class="bg-cardbg border border-slate-800 rounded-lg px-3 py-3 text-slate-300">NuGet / Wheels</div>
+            </div>
+
+            <p class="text-center text-sm text-slate-500 mt-8">
+                <a href="https://github.com/jiowcl/CometTextel/blob/main/doc/getting-started.md" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition">Getting Started Guide →</a>
+                &nbsp;·&nbsp;
+                Download CI Artifacts or Release packages, then include &amp; link.
+            </p>
+        </div>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Project History</h2>
+            <div class="space-y-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl flex gap-5">
+                    <div class="text-indigo-400 font-bold text-lg w-16 shrink-0">2014</div>
+                    <p class="text-slate-300">Original Win32 COMM / GSM PDU code written as a Visual C++ project.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl flex gap-5">
+                    <div class="text-indigo-400 font-bold text-lg w-16 shrink-0">2026</div>
+                    <p class="text-slate-300">Rewritten as a modern C++23 CMake library with cross-platform serial support and renamed to <strong>CometTextel</strong>. Multi-language SDKs, concat SMS, status reports, and CI packages follow.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-cardbg border border-slate-800 p-6 rounded-2xl text-center">
+                <p class="text-sm text-slate-400 mb-2">Official Commercial Partner</p>
+                <a href="https://kjprotech.com/en-us/product/textel-pro" target="_blank" class="text-lg font-semibold text-indigo-300 hover:text-indigo-200 transition">
+                    KJPro Technology — Textel Pro
+                </a>
+                <p class="text-sm text-slate-500 mt-2">Enterprise distribution, custom integration, and dedicated support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Send SMS from Your Code</h2>
+            <p class="text-slate-400 mb-8">Clone the repo, link the library, and talk to any PDU-mode GSM modem — in C++, C#, Python, or BASIC.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://github.com/jiowcl/CometTextel/releases" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-download text-indigo-400"></i>
+                    <span>Releases</span>
+                </a>
+                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-globe text-cyan-400"></i>
+                    <span>Inwazy Technology</span>
+                </a>
+            </div>
+            <p class="mt-10 text-sm text-slate-500">
+                Requires a GSM modem / USB dongle that speaks AT commands in PDU mode
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        <p class="mb-2">
+            <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="hover:text-indigo-400 transition">CometTextel</a>
+            · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
+        </p>
+        <p>
+            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
