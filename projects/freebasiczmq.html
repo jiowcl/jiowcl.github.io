@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="FreeBasicZMQ — ZeroMQ (libzmq) wrapper for FreeBASIC. PUB/SUB, REQ/REP, CURVE, PLAIN, Poll, Proxy, Monitor — procedural and OOP Module examples.">
+    <meta name="keywords" content="FreeBasicZMQ, FreeBASIC, ZeroMQ, libzmq, ZMQ, messaging, pubsub, wrapper, jiowcl">
+    <meta name="author" content="Ji-Feng Tsai">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FreeBasicZMQ — ZeroMQ Wrapper for FreeBASIC">
+    <meta property="og:description" content="Full libzmq binding for FreeBASIC: messaging patterns, CURVE/PLAIN security, poll, proxy, and Module OOP twins.">
+    <meta property="og:url" content="https://github.com/jiowcl/FreeBasicZMQ">
+    <meta property="og:site_name" content="FreeBasicZMQ">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FreeBasicZMQ — ZeroMQ for FreeBASIC">
+    <meta name="twitter:description" content="ZMQ wrapper for FreeBASIC: PUB/SUB, REQ/REP, CURVE, Poll, Proxy — procedural + Module examples.">
+    <meta name="twitter:creator" content="@jiowcl">
+
+    <title>FreeBasicZMQ | ZeroMQ Wrapper for FreeBASIC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com" data-cfasync="false"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script data-cfasync="false">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script data-cfasync="false">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KK8FMPECBG');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "FreeBasicZMQ",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "description": "ZeroMQ (libzmq) wrapper for the FreeBASIC programming language.",
+      "url": "https://github.com/jiowcl/FreeBasicZMQ",
+      "author": {
+        "@type": "Person",
+        "name": "Ji-Feng Tsai",
+        "url": "https://inwazy.com"
+      },
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                FreeBasicZMQ
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                <a href="#examples" class="hover:text-indigo-400 transition">Examples</a>
+                <a href="#example" class="hover:text-indigo-400 transition">Code</a>
+                <a href="#run" class="hover:text-indigo-400 transition">How to Run</a>
+                <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-darkbg to-darkbg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                FreeBASIC · libzmq · Messaging
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                FreeBasicZMQ
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-300 font-medium mb-6">
+                ZeroMQ Wrapper for FreeBASIC
+            </p>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">libzmq 4.3.6 API</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">FreeBASIC 1.10.1+</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">x86 / x64</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Procedural + Module</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">CURVE-enabled</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">MIT License</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                High-performance messaging for FreeBASIC. PUB/SUB, REQ/REP, CURVE and PLAIN security, 
+                poll, proxy, and monitor — with both procedural samples and OOP Module twins.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+                <a href="#example" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                    See PUB/SUB Example
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Messaging Patterns</h3>
+                    <p class="text-sm text-slate-400">PUB/SUB (multipart), REQ/REP, Weather scenario — plus Poll, Proxy, and Monitor helpers.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Procedural + Module</h3>
+                    <p class="text-sm text-slate-400">Each major sample has a procedural copy under <code class="text-slate-300">Example/</code> and an OOP twin under <code class="text-slate-300">Example/Module/</code>.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">CURVE &amp; PLAIN</h3>
+                    <p class="text-sm text-slate-400">Bundled DLL is CURVE-enabled. PLAIN + ZAP demo (admin/secret). Runtime check via <code class="text-slate-300">zmq_has("curve")</code>.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Capability Probe</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">zmq_has</code> for ipc, curve, draft, pgm, and more. Symbols resolved once on open (<code class="text-slate-300">Core/Symbols.bi</code>).</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Type Wrappers</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">LibZmqContext</code>, <code class="text-slate-300">LibZmqSocket</code>, <code class="text-slate-300">LibZmqRuntime</code> — clean OOP-style façade over libzmq.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">x86 &amp; x64</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">Library/x64</code> and <code class="text-slate-300">Library/x86</code> for libzmq (+ libsodium when present). Prefer <code class="text-slate-300">fbc64</code> for x64 builds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples table -->
+    <section id="examples" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Examples</h2>
+            <p class="text-slate-400 text-center mb-12">Procedural under Example/ · OOP twins under Example/Module/</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left border border-slate-800 rounded-2xl overflow-hidden">
+                    <thead class="bg-slate-900/80 text-slate-300">
+                        <tr>
+                            <th class="px-5 py-3 font-semibold">Example</th>
+                            <th class="px-5 py-3 font-semibold">Pattern</th>
+                            <th class="px-5 py-3 font-semibold">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-400">
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">Zmq / Has</td>
+                            <td class="px-5 py-3 text-indigo-300">Version / zmq_has</td>
+                            <td class="px-5 py-3">Smoke / capability probe</td>
+                        </tr>
+                        <tr class="border-t border-slate-800">
+                            <td class="px-5 py-3 text-slate-300">PubServer + SubClient</td>
+                            <td class="px-5 py-3 text-cyan-300">PUB/SUB multipart</td>
+                            <td class="px-5 py-3">Port <strong class="text-slate-300">1689</strong>, topic <code class="text-slate-300">quotes</code></td>
+                        </tr>
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">Weather/*</td>
+                            <td class="px-5 py-3 text-emerald-300">PUB/SUB weather</td>
+                            <td class="px-5 py-3">Port <strong class="text-slate-300">1692</strong>, simulated updates</td>
+                        </tr>
+                        <tr class="border-t border-slate-800">
+                            <td class="px-5 py-3 text-slate-300">ReqClient + RepServer</td>
+                            <td class="px-5 py-3 text-indigo-300">REQ/REP</td>
+                            <td class="px-5 py-3">Request–reply</td>
+                        </tr>
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">Plain</td>
+                            <td class="px-5 py-3 text-cyan-300">PLAIN + ZAP</td>
+                            <td class="px-5 py-3">Port <strong class="text-slate-300">1720</strong>, user admin / secret</td>
+                        </tr>
+                        <tr class="border-t border-slate-800">
+                            <td class="px-5 py-3 text-slate-300">Curve / CurveKeypair</td>
+                            <td class="px-5 py-3 text-emerald-300">CURVE</td>
+                            <td class="px-5 py-3">Needs <code class="text-slate-300">zmq_has("curve")=1</code></td>
+                        </tr>
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">Poll / Proxy / Monitor</td>
+                            <td class="px-5 py-3 text-indigo-300">Infrastructure</td>
+                            <td class="px-5 py-3">Poll, steerable proxy, monitor</td>
+                        </tr>
+                        <tr class="border-t border-slate-800">
+                            <td class="px-5 py-3 text-slate-300">Z85 · Msg · Thread · Stopwatch</td>
+                            <td class="px-5 py-3 text-cyan-300">Helpers</td>
+                            <td class="px-5 py-3">Encode/decode, msg API, utilities</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Example -->
+    <section id="example" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">PUB / SUB Example</h2>
+            <p class="text-slate-400 text-center mb-10">Subscribe before Connect · start Pub first · ~200 ms slow-joiner pause</p>
+            
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl mb-8">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-broadcast-tower mr-2 text-indigo-400"></i>Publisher (excerpt)</span>
+                    <span class="text-xs text-slate-500">fbc … -target win64</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-indigo-400">#Include</span> <span class="text-emerald-300">"Core/Enums.bi"</span>
+<span class="text-indigo-400">#Include</span> <span class="text-emerald-300">"Core/ZeroMQWrapper.bi"</span>
+
+Dim ZmqContextRec As LibZmqContext
+Dim ZmqSocketRec  As LibZmqSocket
+Dim ZmqRuntimeRec As LibZmqRuntime
+
+<span class="text-indigo-400">If</span> LibZMQWrapper.DllOpen(<span class="text-emerald-300">"libzmq.dll"</span>) <span class="text-indigo-400">Then</span>
+    Dim Context As Any Ptr = ZmqContextRec.NewCtx()
+    Dim Socket  As Any Ptr = ZmqSocketRec.Socket(Context, ZMQ_PUB)
+    Dim Rc As Long = ZmqSocketRec.Bind(Socket, <span class="text-emerald-300">"tcp://*:1689"</span>)
+
+    <span class="text-indigo-400">If</span> Rc = <span class="text-amber-300">0</span> <span class="text-indigo-400">Then</span>
+        Sleep(<span class="text-amber-300">200</span>)  <span class="text-slate-500">' slow joiner</span>
+        <span class="text-indigo-400">While</span> <span class="text-amber-300">1</span>
+            Dim topic As String = <span class="text-emerald-300">"quotes"</span>
+            Dim msg   As String = <span class="text-emerald-300">"Bid:…,Ask:…"</span>
+            ZmqSocketRec.Send(Socket, StrPtr(topic), Len(topic), ZMQ_SNDMORE)
+            ZmqSocketRec.Send(Socket, StrPtr(msg), Len(msg), <span class="text-amber-300">0</span>)
+            Sleep(<span class="text-amber-300">100</span>)
+        <span class="text-indigo-400">Wend</span>
+    <span class="text-indigo-400">End If</span>
+<span class="text-indigo-400">End If</span></code></pre>
+            </div>
+
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-satellite-dish mr-2 text-cyan-400"></i>Subscriber (excerpt)</span>
+                    <span class="text-xs text-slate-500">ZMQ_SUBSCRIBE before Connect</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code>Dim Socket As Any Ptr = ZmqSocketRec.Socket(Context, ZMQ_SUB)
+Dim sub As String = <span class="text-emerald-300">"quotes"</span>
+
+ZmqSocketRec.Setsockopt(Socket, ZMQ_SUBSCRIBE, StrPtr(sub), Len(sub))
+ZmqSocketRec.Connect(Socket, <span class="text-emerald-300">"tcp://localhost:1689"</span>)
+
+Dim buf As ZString * <span class="text-amber-300">256</span>
+Dim n As Long = ZmqSocketRec.Recv(Socket, @buf, SizeOf(buf), <span class="text-amber-300">0</span>)
+<span class="text-indigo-400">If</span> n &lt;&gt; <span class="text-amber-300">-1</span> <span class="text-indigo-400">Then</span> Print(Left(buf, n))</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Run -->
+    <section id="run" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">How to Run Examples</h2>
+            <div class="space-y-4">
+                <div class="bg-cardbg border border-slate-800 p-5 rounded-xl flex gap-4">
+                    <div class="text-indigo-400 font-bold text-lg w-8 shrink-0">1</div>
+                    <p class="text-slate-300 text-sm">Set the working directory to the package root that contains <code class="text-slate-400">Core/</code>, <code class="text-slate-400">Example/</code>, and <code class="text-slate-400">Library/</code>.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-5 rounded-xl flex gap-4">
+                    <div class="text-indigo-400 font-bold text-lg w-8 shrink-0">2</div>
+                    <p class="text-slate-300 text-sm">Examples load <code class="text-slate-400">Library/x64/libzmq.dll</code> or <code class="text-slate-400">Library/x86/libzmq.dll</code> (and libsodium when present) via Chdir.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-5 rounded-xl flex gap-4">
+                    <div class="text-indigo-400 font-bold text-lg w-8 shrink-0">3</div>
+                    <p class="text-slate-300 text-sm">Prefer <code class="text-slate-400">fbc64.exe</code> for x64 binaries so the x64 DLL is used.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-5 rounded-xl flex gap-4">
+                    <div class="text-indigo-400 font-bold text-lg w-8 shrink-0">4</div>
+                    <p class="text-slate-300 text-sm"><strong>Pub/Sub order:</strong> start Pub first → wait for bind (~200 ms) → start Sub → subscribers call <code class="text-slate-400">ZMQ_SUBSCRIBE</code> before Connect.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-cardbg border border-slate-800 rounded-2xl p-6">
+                <h3 class="text-lg font-semibold text-cyan-300 mb-3"><i class="fas fa-terminal mr-2"></i>Build</h3>
+                <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code>fbc Example/PubServer.bas -target win64
+fbc Example/SubClient.bas -target win64</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started -->
+    <section id="get-started" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Get Started</h2>
+            <p class="text-slate-400 text-center mb-12">Environment · library path</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300"><i class="fas fa-desktop mr-2"></i>Environment</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li>Windows 7+</li>
+                        <li>FreeBASIC 1.10.1+ (recommend)</li>
+                        <li>libzmq <strong class="text-slate-300">4.3.6</strong> API constants</li>
+                        <li>Tested under Windows 10/11</li>
+                    </ul>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300"><i class="fas fa-folder mr-2"></i>Library Path</h3>
+                    <pre class="text-xs text-slate-300 bg-slate-900/60 rounded-lg p-3 overflow-x-auto"><code>FreeBasicZMQ/Library/x64/libzmq.dll
+FreeBasicZMQ/Library/x86/libzmq.dll
+(+ libsodium.dll when present)</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Message from FreeBASIC</h2>
+            <p class="text-slate-400 mb-8">Clone the repo, point at libzmq, and start with PUB/SUB or REQ/REP — procedural or Module style.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://zeromq.org/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-indigo-400"></i>
+                    <span>ZeroMQ Official</span>
+                </a>
+                <a href="https://www.freebasic.net/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-cyan-400"></i>
+                    <span>FreeBASIC</span>
+                </a>
+                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-globe text-cyan-400"></i>
+                    <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        <p class="mb-2">
+            <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="hover:text-indigo-400 transition">FreeBasicZMQ</a>
+            · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
+        </p>
+        <p>
+            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
