@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="ThinBasicZMQ — ZeroMQ (libzmq) wrapper for ThinBASIC. Native #INCLUDE API + thinBasic_ZeroMQ.dll SDK module. PUB/SUB, REQ/REP, CURVE, PLAIN, Poll, Proxy — x86 only.">
+    <meta name="keywords" content="ThinBasicZMQ, ThinBASIC, ZeroMQ, libzmq, ZMQ, messaging, pubsub, SDK, wrapper, jiowcl">
+    <meta name="author" content="Ji-Feng Tsai">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ThinBasicZMQ — ZeroMQ Wrapper for ThinBASIC">
+    <meta property="og:description" content="Full libzmq binding for ThinBASIC: native includes + optional SDK module. PUB/SUB, REQ/REP, CURVE, PLAIN — 32-bit x86 only.">
+    <meta property="og:url" content="https://github.com/jiowcl/ThinBasicZMQ">
+    <meta property="og:site_name" content="ThinBasicZMQ">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ThinBasicZMQ — ZeroMQ for ThinBASIC">
+    <meta name="twitter:description" content="Native #INCLUDE + USES &quot;ZeroMQ&quot; SDK module. Messaging patterns, CURVE, Poll, Proxy — x86 runtime.">
+    <meta name="twitter:creator" content="@jiowcl">
+
+    <title>ThinBasicZMQ | ZeroMQ Wrapper for ThinBASIC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com" data-cfasync="false"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script data-cfasync="false">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script data-cfasync="false">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KK8FMPECBG');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ThinBasicZMQ",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "description": "ZeroMQ (libzmq) wrapper for the ThinBASIC programming language, with native includes and an optional SDK module.",
+      "url": "https://github.com/jiowcl/ThinBasicZMQ",
+      "author": {
+        "@type": "Person",
+        "name": "Ji-Feng Tsai",
+        "url": "https://inwazy.com"
+      },
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                ThinBasicZMQ
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#apis" class="hover:text-indigo-400 transition">APIs</a>
+                <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                <a href="#samples" class="hover:text-indigo-400 transition">Samples</a>
+                <a href="#example" class="hover:text-indigo-400 transition">Example</a>
+                <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/jiowcl/ThinBasicZMQ" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-darkbg to-darkbg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                ThinBASIC · libzmq · x86
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                ThinBasicZMQ
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-300 font-medium mb-6">
+                ZeroMQ Wrapper for ThinBASIC
+            </p>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">libzmq</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">ThinBASIC 1.14+</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">x86 only</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Native + SDK</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Type wrapper</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">MIT License</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                High-performance messaging for ThinBASIC. Choose full native <code class="text-slate-300">#INCLUDE</code> APIs 
+                or the optional <code class="text-slate-300">USES "ZeroMQ"</code> SDK module — PUB/SUB, REQ/REP, CURVE, PLAIN, Poll, and more.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/ThinBasicZMQ" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+                <a href="#apis" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                    Native vs SDK
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture notice -->
+    <section class="px-6 -mt-8 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-5 flex gap-4 items-start">
+                <div class="text-amber-400 text-xl mt-0.5"><i class="fas fa-exclamation-triangle"></i></div>
+                <div>
+                    <p class="text-amber-200/90 text-sm leading-relaxed">
+                        <strong>x86 only.</strong> ThinBASIC is a 32-bit process — load only <code class="text-amber-100">Library\x86</code>
+                        <code class="text-amber-100">libzmq.dll</code> / <code class="text-amber-100">libsodium.dll</code>.
+                        Do <strong>not</strong> use x64 builds from FreeBasicZMQ / PureBasicZMQ.
+                        You can still talk to x64 peers over <code class="text-amber-100">tcp://</code> (wire protocol is architecture-independent).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Native vs SDK -->
+    <section id="apis" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Two Ways to Call ZeroMQ</h2>
+            <p class="text-slate-400 text-center mb-12">Do not mix <code class="text-slate-300">#INCLUDE</code> Core files with <code class="text-slate-300">USES "ZeroMQ"</code></p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Native</h3>
+                    <p class="text-sm text-slate-400 mb-4"><code class="text-slate-300">Core\ZeroMQ.inc</code> · full procedural + Type wrapper</p>
+                    <ul class="text-sm text-slate-400 space-y-2 mb-6">
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> Full coverage</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> libzmq via <code class="text-slate-300">LibPath.inc</code> (CWD)</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> No build — includes only</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> Constants: <code class="text-slate-300">$ZMQ_*</code></li>
+                    </ul>
+                    <pre class="text-xs text-slate-300 bg-slate-900/60 rounded-lg p-3 overflow-x-auto"><code>#INCLUDE Once ".\Core\ZeroMQ.inc"
+#INCLUDE Once ".\Core\ZeroMQWrapper.inc"</code></pre>
+                </div>
+                <div class="bg-cardbg border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-500/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-white">SDK Module</h3>
+                    <p class="text-sm text-slate-400 mb-4"><code class="text-slate-300">USES "ZeroMQ"</code> · <code class="text-slate-300">thinBasic_ZeroMQ.dll</code></p>
+                    <ul class="text-sm text-slate-400 space-y-2 mb-6">
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Core subset + <code class="text-slate-300">ZmqLibraryInit</code></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Path via <code class="text-slate-300">ZmqLibraryInit(path)</code></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Build: <code class="text-slate-300">SDK\C\build_pelles.bat</code></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Constants: <code class="text-slate-300">%ZMQ_*</code></li>
+                    </ul>
+                    <a href="https://github.com/jiowcl/ThinBasicZMQ/tree/main/SDK/C" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 transition">
+                        SDK/C README →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Messaging Patterns</h3>
+                    <p class="text-sm text-slate-400">PUB/SUB multipart, REQ/REP, PUSH/PULL (SDK), Weather JSON scenario, Poll, Proxy, Monitor.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Procedural + Type</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">LibZmqContext</code>, <code class="text-slate-300">LibZmqSocket</code>, … with renamed methods where ThinBASIC reserved words conflict.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">CURVE &amp; PLAIN</h3>
+                    <p class="text-sm text-slate-400">CURVE end-to-end REQ/REP, PLAIN + in-process ZAP, Z85 helpers, CurveKeypair.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">SDK Module</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">thinBasic_ZeroMQ.dll</code> — install to <code class="text-slate-300">C:\thinBasic\Lib\</code>, keywords with parentheses.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-folder-tree"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Structured Core</h3>
+                    <p class="text-sm text-slate-400">Enums, Runtime, Context, Socket, Msg, Poll, Proxy, Security, Helper — umbrella <code class="text-slate-300">ZeroMQ.inc</code>.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">x86 Runtime</h3>
+                    <p class="text-sm text-slate-400">Bundled under <code class="text-slate-300">Library\x86</code>. Type features need ThinBASIC 1.4.0+.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Samples -->
+    <section id="samples" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Samples</h2>
+            <p class="text-slate-400 text-center mb-12">Procedural · Module · SDK examples</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left border border-slate-800 rounded-2xl overflow-hidden">
+                    <thead class="bg-slate-900/80 text-slate-300">
+                        <tr>
+                            <th class="px-5 py-3 font-semibold">Script</th>
+                            <th class="px-5 py-3 font-semibold">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-400">
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">PubServer / SubClient</td>
+                            <td class="px-5 py-3">PUB/SUB procedural · port 1689 · topic quotes</td>
+                        </tr>
+                        <tr class="border-t border-slate-800">
+                            <td class="px-5 py-3 text-slate-300">RepServer / ReqClient</td>
+                            <td class="px-5 py-3">REQ/REP procedural</td>
+                        </tr>
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">Module\*.tbasic</td>
+                            <td class="px-5 py-3">Same patterns via ZeroMQWrapper.inc</td>
+                        </tr>
+                        <tr class="border-t border-slate-800">
+                            <td class="px-5 py-3 text-slate-300">Monitor · Thread · Proxy · Poll</td>
+                            <td class="px-5 py-3">Infrastructure &amp; helpers</td>
+                        </tr>
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">Curve · Plain · Z85</td>
+                            <td class="px-5 py-3">Security end-to-end</td>
+                        </tr>
+                        <tr class="border-t border-slate-800">
+                            <td class="px-5 py-3 text-slate-300">Weather\*</td>
+                            <td class="px-5 py-3">Weather-style JSON PUB/SUB</td>
+                        </tr>
+                        <tr class="border-t border-slate-800 bg-cardbg/50">
+                            <td class="px-5 py-3 text-slate-300">SDK\C\examples\*</td>
+                            <td class="px-5 py-3">USES "ZeroMQ" — smoke, REQ/REP, PUB/SUB, CURVE, PUSH/PULL, multipart…</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Type wrapper rename note -->
+    <section class="py-12 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center">Type Wrapper Renames</h2>
+            <p class="text-slate-400 text-center text-sm mb-8">ThinBASIC reserved words cannot be Type method names</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left border border-slate-800 rounded-2xl overflow-hidden max-w-2xl mx-auto">
+                    <thead class="bg-slate-900/80 text-slate-300">
+                        <tr>
+                            <th class="px-4 py-2">Procedural</th>
+                            <th class="px-4 py-2">Type method</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-400">
+                        <tr class="border-t border-slate-800 bg-cardbg/50"><td class="px-4 py-2"><code class="text-slate-300">ZmqBind</code></td><td class="px-4 py-2"><code class="text-slate-300">SockBind</code></td></tr>
+                        <tr class="border-t border-slate-800"><td class="px-4 py-2"><code class="text-slate-300">ZmqSend</code> / <code class="text-slate-300">ZmqRecv</code></td><td class="px-4 py-2"><code class="text-slate-300">SockSend</code> / <code class="text-slate-300">SockRecv</code></td></tr>
+                        <tr class="border-t border-slate-800 bg-cardbg/50"><td class="px-4 py-2"><code class="text-slate-300">ZmqErrno</code></td><td class="px-4 py-2"><code class="text-slate-300">GetErrno</code></td></tr>
+                        <tr class="border-t border-slate-800"><td class="px-4 py-2"><code class="text-slate-300">ZmqPoll</code></td><td class="px-4 py-2"><code class="text-slate-300">DoPoll</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example -->
+    <section id="example" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">PUB / SUB Example (Type wrapper)</h2>
+            <p class="text-slate-400 text-center mb-10">Subscribe before Connect · start Pub first · ~200 ms slow-joiner pause</p>
+            
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl mb-8">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-broadcast-tower mr-2 text-indigo-400"></i>Publisher (excerpt)</span>
+                    <span class="text-xs text-slate-500">ThinBASIC · x86</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code>Uses <span class="text-emerald-300">"CONSOLE"</span>
+<span class="text-indigo-400">#INCLUDE</span> Once <span class="text-emerald-300">".\Core\ZeroMQWrapper.inc"</span>
+
+Dim ZmqContextRec As LibZmqContext
+Dim ZmqSocketRec  As LibZmqSocket
+Dim ZmqRuntimeRec As LibZmqRuntime
+
+hContext = ZmqContextRec.NewCtx()
+hSocket  = ZmqSocketRec.NewSocket(hContext, $ZMQ_PUB)
+Rc = ZmqSocketRec.SockBind(hSocket, <span class="text-emerald-300">"tcp://*:1689"</span>)
+
+<span class="text-indigo-400">If</span> Rc = <span class="text-amber-300">0</span> <span class="text-indigo-400">Then</span>
+  Sleep <span class="text-amber-300">200</span>
+  <span class="text-indigo-400">While</span> %TRUE
+    lpszTopic = <span class="text-emerald-300">"quotes"</span>
+    lpszSendMessage = <span class="text-emerald-300">"Bid:…,Ask:…"</span>
+    ZmqSocketRec.SockSend(hSocket, StrPtr(lpszTopic), Len(lpszTopic), $ZMQ_SNDMORE)
+    ZmqSocketRec.SockSend(hSocket, StrPtr(lpszSendMessage), Len(lpszSendMessage), <span class="text-amber-300">0</span>)
+    Sleep <span class="text-amber-300">100</span>
+  <span class="text-indigo-400">Wend</span>
+<span class="text-indigo-400">End If</span></code></pre>
+            </div>
+
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-satellite-dish mr-2 text-cyan-400"></i>Subscriber (excerpt)</span>
+                    <span class="text-xs text-slate-500">$ZMQ_SUBSCRIBE before SockConnect</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code>hSocket = ZmqSocketRec.NewSocket(hContext, $ZMQ_SUB)
+ZmqSocketRec.SockSetsockopt(hSocket, $ZMQ_SUBSCRIBE, StrPtr(<span class="text-emerald-300">"quotes"</span>), Len(<span class="text-emerald-300">"quotes"</span>))
+ZmqSocketRec.SockConnect(hSocket, <span class="text-emerald-300">"tcp://localhost:1689"</span>)
+
+TopicBytes = ZmqSocketRec.SockRecv(hSocket, VarPtr(lpszTopicBuffer), SizeOf(lpszTopicBuffer), <span class="text-amber-300">0</span>)
+MessageBytes = ZmqSocketRec.SockRecv(hSocket, VarPtr(lpszRecvBuffer), SizeOf(lpszRecvBuffer), <span class="text-amber-300">0</span>)
+Printl(Left$(lpszRecvBuffer, MessageBytes))</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started -->
+    <section id="get-started" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Get Started</h2>
+            <p class="text-slate-400 text-center mb-12">Environment · library · SDK build</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300"><i class="fas fa-desktop mr-2"></i>Environment</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li>Windows 10+</li>
+                        <li>ThinBASIC 1.14+ (recommend)</li>
+                        <li><strong class="text-slate-300">32-bit (x86) only</strong></li>
+                        <li>Type features: ThinBASIC 1.4.0+</li>
+                    </ul>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300"><i class="fas fa-folder mr-2"></i>Library</h3>
+                    <pre class="text-xs text-slate-300 bg-slate-900/60 rounded-lg p-3 overflow-x-auto"><code>ThinBasicZMQ\Library\x86\
+  libzmq.dll
+  libsodium.dll</code></pre>
+                    <p class="text-sm text-slate-500 mt-2">Native examples: interpreter + Library\x86 only.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-emerald-300"><i class="fas fa-hammer mr-2"></i>SDK Build</h3>
+                    <pre class="text-xs text-slate-300 bg-slate-900/60 rounded-lg p-3 overflow-x-auto mb-2"><code>cd SDK\C
+build_pelles.bat</code></pre>
+                    <p class="text-sm text-slate-500">Copy <code class="text-slate-400">thinBasic_ZeroMQ.dll</code> to <code class="text-slate-400">C:\thinBasic\Lib\</code></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Message from ThinBASIC</h2>
+            <p class="text-slate-400 mb-8">Clone the repo, use x86 libzmq, and start with native includes or the SDK module.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/ThinBasicZMQ" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://github.com/jiowcl/ThinBasicZMQ/tree/main/SDK/C" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-puzzle-piece text-cyan-400"></i>
+                    <span>SDK Module</span>
+                </a>
+                <a href="https://zeromq.org/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-indigo-400"></i>
+                    <span>ZeroMQ Official</span>
+                </a>
+                <a href="https://www.thinbasic.com/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-cyan-400"></i>
+                    <span>ThinBASIC</span>
+                </a>
+                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-globe text-cyan-400"></i>
+                    <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        <p class="mb-2">
+            <a href="https://github.com/jiowcl/ThinBasicZMQ" target="_blank" class="hover:text-indigo-400 transition">ThinBasicZMQ</a>
+            · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
+        </p>
+        <p class="mb-2 text-slate-600">ThinBASIC Copyright © Eros Olmi</p>
+        <p>
+            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
