@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="OxygenBasic.NET — .NET wrapper for the OxygenBasic compiler. Host scripts with include-path callbacks, shared .NET memory, and a clean high-level Run API.">
+    <meta name="keywords" content="OxygenBasic.NET, OxygenBasic, oxygen.dll, .NET, NuGet, scripting, C#, wrapper, JIT, jiowcl">
+    <meta name="author" content="Ji-Feng Tsai">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OxygenBasic.NET — .NET Wrapper for OxygenBasic">
+    <meta property="og:description" content="Host OxygenBasic scripts from .NET: include paths, shared memory, compile &amp; exec via a clean C# API.">
+    <meta property="og:url" content="https://github.com/jiowcl/OxygenBasic.NET">
+    <meta property="og:site_name" content="OxygenBasic.NET">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OxygenBasic.NET — Host OxygenBasic in .NET">
+    <meta name="twitter:description" content=".NET wrapper for oxygen.dll: InitHost, Pathcall, Varcall, O2Basic, Exec — or one-shot Run().">
+    <meta name="twitter:creator" content="@jiowcl">
+
+    <title>OxygenBasic.NET | .NET Wrapper for OxygenBasic Compiler</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com" data-cfasync="false"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script data-cfasync="false">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OxygenBasic.NET",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "description": ".NET wrapper for the OxygenBasic programming language compiler (oxygen.dll / oxygen64.dll).",
+      "url": "https://github.com/jiowcl/OxygenBasic.NET",
+      "author": {
+        "@type": "Person",
+        "name": "Ji-Feng Tsai",
+        "url": "https://inwazy.com"
+      },
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                OxygenBasic.NET
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                <a href="#api" class="hover:text-indigo-400 transition">API</a>
+                <a href="#example" class="hover:text-indigo-400 transition">Example</a>
+                <a href="#notes" class="hover:text-indigo-400 transition">Notes</a>
+                <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/jiowcl/OxygenBasic.NET" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.nuget.org/packages/OxygenBasic.NET" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="NuGet"><i class="fas fa-cube"></i></a>
+                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-darkbg to-darkbg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                Compile · Host · Execute
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                OxygenBasic.NET
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-300 font-medium mb-6">
+                .NET Wrapper for the OxygenBasic Compiler
+            </p>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">oxygen.dll</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">.NET 8 / 9 / 10</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Windows x86 (prefer)</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">NuGet</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">JIT / Host API</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">MIT License</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Host OxygenBasic scripts from .NET — resolve include paths, share memory with the host, 
+                compile with <code class="text-slate-300">O2Basic</code>, and execute in one clean API surface.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.nuget.org/packages/OxygenBasic.NET" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                    <i class="fas fa-cube mr-2"></i>Install from NuGet
+                </a>
+                <a href="https://github.com/jiowcl/OxygenBasic.NET" target="_blank" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">What You Can Do</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">One-Shot <code class="text-indigo-300">Run()</code></h3>
+                    <p class="text-sm text-slate-400">High-level API: <code class="text-slate-300">InitHost</code> → Pathcall → <code class="text-slate-300">O2Basic</code> → <code class="text-slate-300">Exec</code> in a single call with <code class="text-slate-300">OxygenHostOptions</code>.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Include-Path Callback</h3>
+                    <p class="text-sm text-slate-400">Resolve <code class="text-slate-300">%app_includepath%</code> from the host so scripts can <code class="text-slate-300">include</code> your .inc files safely.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Shared .NET Memory</h3>
+                    <p class="text-sm text-slate-400">Pin host variables and let Oxygen scripts read/write them — ideal for counters, buffers, and interop.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Low-Level Control</h3>
+                    <p class="text-sm text-slate-400">Call <code class="text-slate-300">InitHost</code>, <code class="text-slate-300">Pathcall</code>, <code class="text-slate-300">Varcall</code>, <code class="text-slate-300">O2Basic</code>, <code class="text-slate-300">Exec</code>, <code class="text-slate-300">Errno</code> yourself when you need finer control.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Error Handling</h3>
+                    <p class="text-sm text-slate-400">Throws <code class="text-slate-300">OxygenException</code> on compile/runtime errors, or set <code class="text-slate-300">ThrowOnError = false</code> and inspect <code class="text-slate-300">OxygenRunResult</code>.</p>
+                </div>
+
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">NuGet Ready</h3>
+                    <p class="text-sm text-slate-400">Ships <code class="text-slate-300">oxygen.dll</code> (x86) / <code class="text-slate-300">oxygen64.dll</code> (x64) with runtime DllImport resolver. Install and go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Surface -->
+    <section id="api" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">API Surface</h2>
+            <p class="text-slate-400 text-center mb-12">High-level host flow and core engine calls</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300">High-Level Host</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Oxygenbasic.Run</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">OxygenHostOptions</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">IncludeRoot</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">VarResolver</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">ThrowOnError</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">OxygenRunResult</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">OxygenException</span>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300">Engine Lifecycle</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">InitHost</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Pathcall</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Varcall</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">O2Basic</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Exec</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Errno</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">Buf / Lib / Link / Eval</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-slate-500 mt-8">
+                Since 1.0.8: <code class="text-slate-400">O2Basic</code>, <code class="text-slate-400">Exec</code>, <code class="text-slate-400">Buf</code>, <code class="text-slate-400">Lib</code>, <code class="text-slate-400">Link</code>, <code class="text-slate-400">Eval</code> return <strong class="text-slate-300">IntPtr</strong> — compare with <code class="text-slate-400">IntPtr.Zero</code>, not <code class="text-slate-400">&gt; 0</code>.
+            </p>
+        </div>
+    </section>
+
+    <!-- Example -->
+    <section id="example" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Quick Example</h2>
+            <p class="text-slate-400 text-center mb-10">Hosted script with include path and optional variable resolver</p>
+            
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl mb-8">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>High-level Run</span>
+                    <span class="text-xs text-slate-500">C#</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code>OxygenRunResult result = Oxygenbasic.Run(script, <span class="text-indigo-400">new</span> OxygenHostOptions
+{
+    IncludeRoot = <span class="text-emerald-300">@"Sample\inc"</span>,
+    VarResolver = name =&gt; <span class="text-slate-500">/* optional host variable lookup */</span>
+});</code></pre>
+            </div>
+
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-cogs mr-2 text-cyan-400"></i>Step-by-step</span>
+                    <span class="text-xs text-slate-500">InitHost → Pathcall → O2Basic → Exec</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code>Oxygenbasic.InitHost();
+Oxygenbasic.Pathcall(path =&gt; <span class="text-slate-500">/* resolve %app_includepath% to Sample\inc */</span>);
+Oxygenbasic.Varcall(name =&gt; <span class="text-slate-500">/* optional host variable lookup */</span>);
+
+<span class="text-slate-500">// Script uses: includepath "%app_includepath%" / include "math_helpers.inc"</span>
+Oxygenbasic.O2Basic(script);
+<span class="text-indigo-400">if</span> (Oxygenbasic.Errno() == <span class="text-amber-300">0</span>)
+{
+    Oxygenbasic.Exec();
+}</code></pre>
+            </div>
+
+            <p class="text-center text-sm text-slate-500 mt-6">
+                Samples: <code class="text-slate-400">Sample\hosted_demo.txt</code>, <code class="text-slate-400">Sample\inc\math_helpers.inc</code>, <code class="text-slate-400">Sample\test_fib.txt</code>
+            </p>
+        </div>
+    </section>
+
+    <!-- Important Notes -->
+    <section id="notes" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Important Notes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Prefer x86</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">A 64-bit / AnyCPU process throws <code class="text-slate-300">PlatformNotSupportedException</code> instead of loading <code class="text-slate-300">oxygen64.dll</code> (DllMain AV). Prefer <strong>x86</strong>. Override with <code class="text-slate-300">OXYGENBASIC_TRY_X64=1</code> only if you have a fixed native DLL.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Process-Global State</h3>
+                    </div>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">oxygen.dll</code> is global to the process (single-threaded use). <code class="text-slate-300">Abst()</code> cannot be undone. See <code class="text-slate-300">docs/oxygen-process-state.md</code>.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Breaking Change (1.0.8)</h3>
+                    </div>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">O2Basic</code>, <code class="text-slate-300">Exec</code>, <code class="text-slate-300">Buf</code>, <code class="text-slate-300">Lib</code>, <code class="text-slate-300">Link</code>, <code class="text-slate-300">Eval</code> now return <code class="text-slate-300">IntPtr</code>. Compare with <code class="text-slate-300">IntPtr.Zero</code>. See <code class="text-slate-300">CHANGELOG.md</code>.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">CI Matrix</h3>
+                    </div>
+                    <p class="text-sm text-slate-400"><strong>x86</strong>: build + test (net8/9/10) + hosted example. <strong>x64</strong>: build only (native tests skipped). See <code class="text-slate-300">docs/oxygen64-x64-runtime.md</code>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started -->
+    <section id="get-started" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Get Started</h2>
+            <p class="text-slate-400 text-center mb-12">NuGet install · environment · examples</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300"><i class="fas fa-cube mr-2"></i>NuGet</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code>Install-Package OxygenBasic.NET
+
+# or
+dotnet add package OxygenBasic.NET</code></pre>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300"><i class="fas fa-play mr-2"></i>Examples</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-4 overflow-x-auto"><code># See OxygenBasic.Example
+# hosted_demo · include path · shared memory
+# test_fib · simple Fibonacci script</code></pre>
+                </div>
+            </div>
+
+            <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 text-center">
+                <p class="text-sm text-slate-400 mb-2">Requirements</p>
+                <p class="text-slate-300">
+                    Windows 10+ · OxygenBasic 0.90 · .NET 8 / 9 / 10 (Windows) · 
+                    <strong>prefer x86</strong> · ships oxygen.dll (x86) / oxygen64.dll (x64)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Compile Oxygen from .NET</h2>
+            <p class="text-slate-400 mb-8">Install the package, host a script with include paths and shared memory, and run it in a few lines of C#.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.nuget.org/packages/OxygenBasic.NET" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                    <i class="fas fa-cube"></i>
+                    <span>NuGet Package</span>
+                </a>
+                <a href="https://github.com/jiowcl/OxygenBasic.NET" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fab fa-github text-indigo-400"></i>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://github.com/Charles-Pegge/OxygenBasic" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-cyan-400"></i>
+                    <span>OxygenBasic Official</span>
+                </a>
+                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-globe text-cyan-400"></i>
+                    <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        <p class="mb-2">
+            <a href="https://github.com/jiowcl/OxygenBasic.NET" target="_blank" class="hover:text-indigo-400 transition">OxygenBasic.NET</a>
+            · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
+        </p>
+        <p class="mb-2 text-slate-600">
+            OxygenBasic Copyright © Charles Pegge · <a href="https://github.com/Charles-Pegge/OxygenBasic" target="_blank" class="hover:text-cyan-400 transition">OxygenBasic Compiler</a>
+        </p>
+        <p>
+            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
