@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="FreeBasicNanoMsg — Nanomsg and NNG wrappers for FreeBASIC. Scalability protocols: PUB/SUB, REQ/REP, PUSH/PULL, Survey, PAIR, BUS — with typed sockopts, poll, and zero-copy helpers.">
+    <meta name="keywords" content="FreeBasicNanoMsg, FreeBasicNNG, FreeBASIC, nanomsg, NNG, messaging, pubsub, wrapper, jiowcl">
+    <meta name="author" content="Ji-Feng Tsai">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FreeBasicNanoMsg — Nanomsg/NNG for FreeBASIC">
+    <meta property="og:description" content="Nanomsg and NNG (nanomsg-next-gen) wrappers for FreeBASIC. Two packages, side by side — APIs are intentionally incompatible.">
+    <meta property="og:url" content="https://github.com/jiowcl/FreeBasicNanoMsg">
+    <meta property="og:site_name" content="FreeBasicNanoMsg">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FreeBasicNanoMsg — Nanomsg/NNG for FreeBASIC">
+    <meta name="twitter:description" content="Scalability protocols in FreeBASIC: nanomsg (legacy) and FreeBasicNNG (recommended for new work).">
+    <meta name="twitter:creator" content="@jiowcl">
+
+    <title>FreeBasicNanoMsg | Nanomsg &amp; NNG Wrapper for FreeBASIC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com" data-cfasync="false"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script data-cfasync="false">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script data-cfasync="false">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KK8FMPECBG');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "FreeBasicNanoMsg",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows",
+      "description": "Nanomsg and NNG wrappers for the FreeBASIC programming language.",
+      "url": "https://github.com/jiowcl/FreeBasicNanoMsg",
+      "author": {
+        "@type": "Person",
+        "name": "Ji-Feng Tsai",
+        "url": "https://inwazy.com"
+      },
+      "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+</head>
+<body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                FreeBasicNanoMsg
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#packages" class="hover:text-indigo-400 transition">Packages</a>
+                <a href="#features" class="hover:text-indigo-400 transition">Features</a>
+                <a href="#protocols" class="hover:text-indigo-400 transition">Protocols</a>
+                <a href="#example" class="hover:text-indigo-400 transition">Example</a>
+                <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/jiowcl/FreeBasicNanoMsg" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-24 pb-16 px-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-darkbg to-darkbg">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs sm:text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                FreeBASIC · nanomsg · NNG
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                FreeBasicNanoMsg
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-300 font-medium mb-6">
+                Nanomsg &amp; NNG Wrappers for FreeBASIC
+            </p>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">nanomsg</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">NNG (next-gen)</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">FreeBASIC 1.10.1+</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">x64</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Type wrappers</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">MIT License</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Scalability protocols in FreeBASIC — publish/subscribe, request/reply, pipeline, survey, pair, and bus. 
+                Two side-by-side packages: classic <strong class="text-slate-300">nanomsg</strong> and modern <strong class="text-slate-300">NNG</strong>.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/FreeBasicNanoMsg" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+                <a href="#packages" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                    Choose nanomsg or NNG
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice -->
+    <section class="px-6 -mt-8 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-5 flex gap-4 items-start">
+                <div class="text-amber-400 text-xl mt-0.5"><i class="fas fa-info-circle"></i></div>
+                <div>
+                    <p class="text-amber-200/90 text-sm leading-relaxed">
+                        <strong>nanomsg is no longer maintained.</strong> For new work, prefer the sibling package
+                        <a href="https://github.com/jiowcl/FreeBasicNanoMsg/tree/main/FreeBasicNNG" target="_blank" class="text-cyan-300 hover:text-cyan-200 underline">FreeBasicNNG</a>
+                        (NNG / nanomsg-next-gen). The two APIs are <strong>intentionally incompatible</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Packages -->
+    <section id="packages" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Two Packages, Side by Side</h2>
+            <p class="text-slate-400 text-center mb-12">Same repo — pick the stack that matches your needs</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-cardbg border border-slate-800 p-8 rounded-2xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-archive"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-white">FreeBasicNanoMsg</h3>
+                    <p class="text-sm text-slate-400 mb-4">Classic <strong class="text-slate-300">libnanomsg</strong> binding. Ideal for existing nanomsg code and wire-compatible peers.</p>
+                    <ul class="text-sm text-slate-400 space-y-2 mb-6">
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> <code class="text-slate-300">LibNanomsgSocket</code> · <code class="text-slate-300">LibNanomsgRuntime</code></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> Socket handles are <code class="text-slate-300">Long</code> (C <code class="text-slate-300">int</code>)</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> Bind / Connect · nn_errno / Strerror</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-indigo-400 mt-1"></i> Runtime: <code class="text-slate-300">Library/x64/nanomsg.dll</code></li>
+                    </ul>
+                    <span class="text-xs px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400">Legacy · Sustaining</span>
+                </div>
+                <div class="bg-cardbg border border-cyan-500/30 p-8 rounded-2xl hover:border-cyan-500/50 transition relative">
+                    <div class="absolute top-4 right-4 text-xs px-2 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Recommended</div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-white">FreeBasicNNG</h3>
+                    <p class="text-sm text-slate-400 mb-4">Modern <strong class="text-slate-300">NNG</strong> (nanomsg-next-gen). Prefer this for new projects.</p>
+                    <ul class="text-sm text-slate-400 space-y-2 mb-6">
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> NNG protocol constructors &amp; updated API</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Intentionally incompatible with nanomsg binding</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Active development path</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Sibling folder in the same repository</li>
+                    </ul>
+                    <a href="https://github.com/jiowcl/FreeBasicNanoMsg/tree/main/FreeBasicNNG" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 transition">
+                        Browse FreeBasicNNG →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">nanomsg Binding Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Type Wrappers</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">LibNanomsgSocket</code>, <code class="text-slate-300">LibNanomsgRuntime</code>, <code class="text-slate-300">LibNanomsgMessage</code> — OOP-style façade over nn_* APIs.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Typed Sockopts</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">SetsockoptString</code> for topics, <code class="text-slate-300">SetsockoptInt</code> / <code class="text-slate-300">GetsockoptInt</code> for timeouts and deadlines.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Zero-Copy</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">NnAllocmsg</code> / <code class="text-slate-300">Reallocmsg</code> / <code class="text-slate-300">Freemsg</code> with size sentinel <code class="text-slate-300">NN_MSG</code> on send/recv.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-poll"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Poll</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">NnPoll</code> / <code class="text-slate-300">NnPollFd</code> with <code class="text-slate-300">NN_POLLIN</code> / <code class="text-slate-300">NN_POLLOUT</code>; timeout in ms (<code class="text-slate-300">-1</code> = forever).</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-cyan-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Statistics</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">NnGetStatistic</code> / <code class="text-slate-300">GetStatistic</code> with <code class="text-slate-300">NN_STAT_*</code> constants.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-power-off"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Clean Shutdown</h3>
+                    <p class="text-sm text-slate-400"><code class="text-slate-300">NnTerm</code> / <code class="text-slate-300">LibNanomsgRuntime.Term</code> for multi-thread shutdown.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocols & Transports -->
+    <section id="protocols" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center">Protocols &amp; Transports</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-4 text-indigo-300">Protocols</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_PAIR</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_PUB / NN_SUB</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_REQ / NN_REP</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_PUSH / NN_PULL</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_SURVEYOR / NN_RESPONDENT</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_BUS</span>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-4 text-cyan-300">Transports</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_INPROC</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_IPC</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_TCP</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_WS</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_TCP_NODELAY</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">NN_IPC_* · NN_WS_MSG_TYPE*</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-slate-500 mt-6">TODO: BUS example still on the roadmap</p>
+        </div>
+    </section>
+
+    <!-- Example -->
+    <section id="example" class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">PUB / SUB Example (nanomsg)</h2>
+            <p class="text-slate-400 text-center mb-10">Prefix the published message so it matches the subscriber filter</p>
+            
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl mb-8">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-broadcast-tower mr-2 text-indigo-400"></i>Publisher (excerpt)</span>
+                    <span class="text-xs text-slate-500">fbc PubServer.bas -target win64</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-indigo-400">#Include</span> <span class="text-emerald-300">"../../Core/Enums.bi"</span>
+<span class="text-indigo-400">#Include</span> <span class="text-emerald-300">"../../Core/NanomsgWrapper.bi"</span>
+
+Dim NnSocketRec As LibNanomsgSocket
+Dim NnRuntime   As LibNanomsgRuntime
+
+<span class="text-indigo-400">If</span> LibNanomsgWrapper.DllOpen(lpszLibNnDll) <span class="text-indigo-400">Then</span>
+    Dim Socket As Long = NnSocketRec.Socket(AF_SP, NN_PUB)
+    Dim Rc As Long = NnSocketRec.Bind(Socket, <span class="text-emerald-300">"tcp://*:1689"</span>)
+
+    <span class="text-indigo-400">While</span> <span class="text-amber-300">1</span>
+        Dim topic As String = <span class="text-emerald-300">"quotes"</span>
+        <span class="text-slate-500">' Prefix must match NN_SUB_SUBSCRIBE on the subscriber</span>
+        Dim msg As String = topic &amp; <span class="text-emerald-300">"#Bid: …,Ask:…"</span>
+        Rc = NnSocketRec.Send(Socket, StrPtr(msg), Len(msg), <span class="text-amber-300">0</span>)
+        Sleep(<span class="text-amber-300">500</span>)
+    <span class="text-indigo-400">Wend</span>
+<span class="text-indigo-400">End If</span></code></pre>
+            </div>
+
+            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-satellite-dish mr-2 text-cyan-400"></i>Subscriber (excerpt)</span>
+                    <span class="text-xs text-slate-500">nn_recv has no null terminator</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code>Dim Socket As Long = NnSocketRec.Socket(AF_SP, NN_SUB)
+NnSocketRec.Connect(Socket, <span class="text-emerald-300">"tcp://localhost:1689"</span>)
+NnSocketRec.SetsockoptString(Socket, NN_SUB, NN_SUB_SUBSCRIBE, StrPtr(<span class="text-emerald-300">"quotes"</span>))
+
+Dim buf As Any Ptr = CAllocate(<span class="text-amber-300">256</span>)
+Dim n As Long = NnSocketRec.Recv(Socket, buf, <span class="text-amber-300">256</span>, <span class="text-amber-300">0</span>)
+<span class="text-indigo-400">If</span> n &gt;= <span class="text-amber-300">0</span> <span class="text-indigo-400">Then</span> Print(BytesToString(buf, n))  <span class="text-slate-500">' copy by returned length</span>
+Deallocate(buf)</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started -->
+    <section id="get-started" class="py-20 px-6 border-t border-slate-800/60">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4 text-center">Get Started</h2>
+            <p class="text-slate-400 text-center mb-12">Environment · runtime · build</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-indigo-300"><i class="fas fa-desktop mr-2"></i>Environment</h3>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li>Windows 7+</li>
+                        <li>FreeBASIC 1.10.1+ (recommend)</li>
+                        <li>Tested under Windows 11</li>
+                        <li>x64 nanomsg.dll path in examples</li>
+                    </ul>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-cyan-300"><i class="fas fa-folder mr-2"></i>Runtime</h3>
+                    <pre class="text-xs text-slate-300 bg-slate-900/60 rounded-lg p-3 overflow-x-auto mb-2"><code>…/Library/x64/nanomsg.dll</code></pre>
+                    <p class="text-sm text-slate-500">Examples Chdir into the library folder before DllOpen.</p>
+                </div>
+                <div class="bg-cardbg border border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3 text-emerald-300"><i class="fas fa-hammer mr-2"></i>Build</h3>
+                    <pre class="text-sm text-slate-300 bg-slate-900/60 rounded-lg p-3 overflow-x-auto"><code>fbc PubServer.bas -target win64
+fbc SubClient.bas -target win64</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 bg-slate-900/40 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Scalable Messaging in FreeBASIC</h2>
+            <p class="text-slate-400 mb-8">Clone the repo, pick nanomsg or NNG, and start with PUB/SUB. For new projects, prefer FreeBasicNNG.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/jiowcl/FreeBasicNanoMsg" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://github.com/jiowcl/FreeBasicNanoMsg/tree/main/FreeBasicNNG" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-rocket text-cyan-400"></i>
+                    <span>FreeBasicNNG</span>
+                </a>
+                <a href="https://nng.nanomsg.org/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-indigo-400"></i>
+                    <span>NNG Official</span>
+                </a>
+                <a href="https://www.freebasic.net/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt text-cyan-400"></i>
+                    <span>FreeBASIC</span>
+                </a>
+                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                    <i class="fas fa-globe text-cyan-400"></i>
+                    <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        <p class="mb-2">
+            <a href="https://github.com/jiowcl/FreeBasicNanoMsg" target="_blank" class="hover:text-indigo-400 transition">FreeBasicNanoMsg</a>
+            · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
+        </p>
+        <p>
+            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
