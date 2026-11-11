@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Vyrn — A concise, modern Lua-inspired programming language for fast embedded scripting. Built entirely in PureBasic.">
+    <meta name="description" content="Vyrn — A concise, modern Lua-inspired programming language for fast embedded scripting, with optional native packaging (Standalone EXE or Compile-to-C).">
     <meta name="keywords" content="Vyrn, programming language, Lua, PureBasic, embedded scripting, bytecode VM, scripting language, jiowcl">
     <meta name="author" content="Ji-Feng Tsai">
     <meta name="robots" content="index, follow">
@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Vyrn — Tiny, Elegant & Fast Lua-inspired Language">
-    <meta property="og:description" content="A concise, lightweight programming language designed for small-scale applications and embedded scripting. Built entirely in PureBasic.">
+    <meta property="og:description" content="A concise, lightweight programming language designed for small-scale applications and embedded scripting, with optional native packaging (Standalone EXE or Compile-to-C).">
     <meta property="og:url" content="https://github.com/jiowcl/Vyrn">
     <meta property="og:site_name" content="Vyrn">
     <meta property="og:locale" content="en_US">
@@ -110,16 +110,18 @@
             
             <!-- Tags -->
             <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">PureBasic</span>
+                <!--<span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">PureBasic</span>-->
                 <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Embedded Scripting</span>
                 <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Optional Typing</span>
                 <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Bytecode VM</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">Standalone / Compile</span>
                 <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-sm">MIT License</span>
             </div>
 
             <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
                 Concise, lightweight, and designed for small-scale applications and embedded scripting. 
                 Built entirely in PureBasic — bringing the familiar elegance of Lua while evolving its own unique language characteristics.
+                Optionally ship as a self-contained folder/EXE (full language) or compile-safe scripts to native via libvyrnrt.
             </p>
 
             <div class="flex flex-wrap justify-center gap-4">
@@ -182,9 +184,20 @@
                     <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
                         <i class="fas fa-laptop-code"></i>
                     </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Native Packaging (Ship)</h3>
+                    <p class="text-sm text-slate-400">
+                        <strong>Standalone</strong> — full language + stdlib as a distributable folder/EXE.<br>
+                        <strong>Compile</strong> — @compile-safe scripts to native via libvyrnrt (no PureBasic runtime needed).
+                    </p>
+                </div>
+
+                <!--<div class="bg-cardbg border border-slate-800 p-6 rounded-xl hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
                     <h3 class="text-lg font-bold mb-2 text-white">Official Vyrn IDE</h3>
                     <p class="text-sm text-slate-400">Standalone, ultra-lightweight IDE with custom syntax highlighting, multi-file support, and integrated run/debug.</p>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
@@ -288,8 +301,8 @@ print(calculate_bonus(100))
                     <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
                         <i class="fas fa-plug"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Native Embedding</h3>
-                    <p class="text-sm text-slate-400 mb-4">LibVyrn.dll + C/C++ headers for seamless host integration.</p>
+                    <h3 class="text-xl font-semibold mb-3">Native Packaging & Embedding</h3>
+                    <p class="text-sm text-slate-400 mb-4">Ship as Standalone (full features via Vyrn.dll + optional C host) or Compile-to-native (libvyrnrt). Also embed via C ABI / DLL / C#.</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">C ABI</span>
                         <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-lg border border-slate-700">DLL / LIB</span>
@@ -323,7 +336,7 @@ print(calculate_bonus(100))
                 </div>
                 <div class="bg-cardbg border border-slate-800 p-6 rounded-xl flex gap-5">
                     <div class="text-indigo-400 font-bold text-lg w-16 shrink-0">2026</div>
-                    <p class="text-slate-300">Official standalone Vyrn IDE released (syntax highlighting, multi-file, run/debug)</p>
+                    <p class="text-slate-300">Ship paths mature: Standalone packaging + Compile-to-native (libvyrnrt), SSE/streaming HTTP, zlib/crypto file helpers, and official standalone Vyrn IDE released (syntax highlighting, multi-file, run/debug)</p>
                 </div>
             </div>
         </div>
