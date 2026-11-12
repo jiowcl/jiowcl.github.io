@@ -246,11 +246,15 @@
                     <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>greet.vyrn</span>
                     <span class="text-xs text-slate-500">Optional Typing</span>
                 </div>
-                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-slate-500">-- Vyrn (Optional Typing)</span>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300">
+<code><span class="text-slate-500">-- Vyrn (Optional Typing)</span>
+
+<span class="text-slate-500">@doc("Receive a name and return a personalized greeting.")</span>
 <span class="text-indigo-400">def</span> greet(name: <span class="text-cyan-300">string</span>) -&gt; <span class="text-cyan-300">string</span>
     <span class="text-indigo-400">return</span> <span class="text-emerald-300">"Hello, "</span> .. name .. <span class="text-emerald-300">"!"</span>
 <span class="text-indigo-400">end</span>
 
+<span class="text-slate-500">@doc("Calculate and return the weighted bonus.")</span>
 <span class="text-indigo-400">def</span> calculate_bonus(score: <span class="text-cyan-300">number</span>) -&gt; <span class="text-cyan-300">number</span>
     <span class="text-indigo-400">return</span> score * 1.1
 <span class="text-indigo-400">end</span>
@@ -260,7 +264,8 @@ print(calculate_bonus(100))
 
 <span class="text-slate-500">-- Output:
 -- Hello, Vyrn!
--- 110</span></code></pre>
+-- 110</span></code>
+                </pre>
             </div>
         </div>
     </section>
