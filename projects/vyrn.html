@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Vyrn — A concise, modern Lua-inspired programming language for fast embedded scripting, with optional native packaging (Standalone EXE or Compile-to-C).">
     <meta name="keywords" content="Vyrn, programming language, Lua, PureBasic, embedded scripting, bytecode VM, scripting language, jiowcl">
     <meta name="author" content="Ji-Feng Tsai">
@@ -66,6 +65,24 @@
       "license": "https://opensource.org/licenses/MIT"
     }
     </script>
+    <style>
+        /* subtle tab styling to integrate with dark theme */
+        .tab-btn.active {
+            background-color: #1e293b; /* cardbg */
+            border-color: #6366f1; /* indigo-500 */
+            color: #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        pre {
+            background-color: #0f172a; /* darkbg for contrast */
+        }
+    </style>
 </head>
 <body class="bg-darkbg text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
@@ -235,13 +252,23 @@
         </div>
     </section>
 
-    <!-- Example Section -->
+    <!-- Example Section (Tabbed) -->
     <section id="example" class="py-20 px-6 border-t border-slate-800/60">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold mb-4 text-center">Quick Example</h2>
-            <p class="text-slate-400 text-center mb-10">Vyrn supports both its own syntax and classic Lua style</p>
-            
-            <div class="bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+            <p class="text-slate-400 text-center mb-10">Vyrn supports its own syntax and classic Lua style — explore with tabs</p>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-6" id="example-tabs">
+                <button data-tab="quick" class="tab-btn active px-4 py-2 text-sm font-medium rounded-lg border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 transition">Quick</button>
+                <button data-tab="crypto" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 transition">Crypto</button>
+                <button data-tab="json" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 transition">Json</button>
+                <button data-tab="struct" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 transition">Struct</button>
+                <button data-tab="vector" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg border border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 transition">Vector</button>
+            </div>
+
+            <!-- Tab Content: Quick (original) -->
+            <div id="tab-quick" class="tab-content active bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
                 <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
                     <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>greet.vyrn</span>
                     <span class="text-xs text-slate-500">Optional Typing</span>
@@ -266,6 +293,100 @@ print(calculate_bonus(100))
 <span class="text-slate-500">-- Output:
 -- Hello, Vyrn!
 -- 110</span></code>
+                </pre>
+            </div>
+
+            <!-- Tab Content: Crypto -->
+            <div id="tab-crypto" class="tab-content bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>crypto_demo.vyrn</span>
+                    <span class="text-xs text-slate-500">Hashing &amp; HMAC</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300">
+<code><span class="text-slate-500">-- vyrn: 13</span>
+<span class="text-indigo-400">let</span> msg = <span class="text-emerald-300">"hello Vyrn"</span>
+print(<span class="text-emerald-300">"md5"</span>, crypto.md5(msg))
+print(<span class="text-emerald-300">"sha256"</span>, crypto.sha256(msg))
+
+<span class="text-slate-500">-- HMAC-signed token: payload.hex(hmac)</span>
+<span class="text-indigo-400">let</span> secret = <span class="text-emerald-300">"s3cret"</span>
+<span class="text-indigo-400">let</span> payload = <span class="text-emerald-300">"user=alice&role=admin"</span>
+<span class="text-indigo-400">let</span> sig = crypto.hmac(<span class="text-emerald-300">"sha256"</span>, secret, payload)
+<span class="text-indigo-400">let</span> token = payload .. <span class="text-emerald-300">"."</span> .. sig
+print(<span class="text-emerald-300">"token"</span>, token)
+
+<span class="text-slate-500">-- Output:
+-- md5 22da43d45eee0c87b39c97634a456a48
+-- sha256 1c7be6581f9d1d44e8d5875c233a6e28627e45c54966bbe286385556e34d39bb
+-- token user=alice&role=admin.f75347f44ccad5631df8aebce4036556bedf7fc68ad6ba5888cfe196975bbafc</span></code>
+                </pre>
+            </div>
+
+            <!-- Tab Content: Json -->
+            <div id="tab-json" class="tab-content bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>json_demo.vyrn</span>
+                    <span class="text-xs text-slate-500">Encode &amp; build objects</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300">
+<code><span class="text-indigo-400">let</span> tags = {<span class="text-emerald-300">"lang"</span>, <span class="text-emerald-300">"math"</span>}
+<span class="text-indigo-400">let</span> user = {}
+user.name = <span class="text-emerald-300">"Ada"</span>
+user.id = <span class="text-amber-300">42</span>
+user.tags = tags
+<span class="text-indigo-400">let</span> s = json.encode(tags)
+print(<span class="text-emerald-300">"tags"</span>, s)
+
+<span class="text-slate-500">-- Output:
+-- tags ["lang","math"]</span></code>
+                </pre>
+            </div>
+
+            <!-- Tab Content: Struct -->
+            <div id="tab-struct" class="tab-content bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>struct_demo.vyrn</span>
+                    <span class="text-xs text-slate-500">User-defined struct</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300">
+<code><span class="text-slate-500">-- vyrn: 12</span>
+<span class="text-indigo-400">struct</span> Vec2
+    x: <span class="text-cyan-300">number</span>
+    y: <span class="text-cyan-300">number</span>
+<span class="text-indigo-400">end</span>
+
+<span class="text-indigo-400">let</span> v = Vec2 { x = <span class="text-amber-300">3</span>, y = <span class="text-amber-300">4</span> }
+print(v.x, v.y)
+
+<span class="text-slate-500">-- Output:
+-- 3 4</span></code>
+                </pre>
+            </div>
+
+            <!-- Tab Content: Vector -->
+            <div id="tab-vector" class="tab-content bg-cardbg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/60">
+                    <span class="text-sm font-medium text-slate-300"><i class="fas fa-file-code mr-2 text-indigo-400"></i>vector_demo.vyrn</span>
+                    <span class="text-xs text-slate-500">Vector operations</span>
+                </div>
+                <pre class="p-6 text-sm leading-relaxed overflow-x-auto text-slate-300">
+<code><span class="text-slate-500">-- vyrn: 12</span>
+<span class="text-indigo-400">let</span> v = require(<span class="text-emerald-300">"vector"</span>)
+
+<span class="text-indigo-400">let</span> cat = { <span class="text-amber-300">1</span>, <span class="text-amber-300">0</span>, <span class="text-amber-300">0</span> }
+<span class="text-indigo-400">let</span> dog = { <span class="text-amber-300">0.9</span>, <span class="text-amber-300">0.1</span>, <span class="text-amber-300">0</span> }
+<span class="text-indigo-400">let</span> car = { <span class="text-amber-300">0</span>, <span class="text-amber-300">0</span>, <span class="text-amber-300">1</span> }
+
+print(<span class="text-emerald-300">"dot"</span>, v.dot(cat, dog))
+print(<span class="text-emerald-300">"cosine_cat_dog"</span>, v.cosine(cat, dog) &gt; <span class="text-amber-300">0.9</span>)
+print(<span class="text-emerald-300">"cosine_cat_car"</span>, v.cosine(cat, car) == <span class="text-amber-300">0</span>)
+print(<span class="text-emerald-300">"l2_cat_dog"</span>, v.l2_distance(cat, dog) &lt; <span class="text-amber-300">0.2</span>)
+
+<span class="text-slate-500">-- Output:
+-- dot 0.9
+-- cosine_cat_dog true
+-- cosine_cat_car true
+-- l2_cat_dog true</span></code>
                 </pre>
             </div>
         </div>
@@ -384,8 +505,40 @@ print(calculate_bonus(100))
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false">
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Tab switching logic
+        (function() {
+            const tabButtons = document.querySelectorAll('#example-tabs .tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function switchTab(tabId) {
+                // Deactivate all tabs
+                tabButtons.forEach(btn => {
+                    if (btn.dataset.tab === tabId) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Hide all contents
+                tabContents.forEach(content => {
+                    if (content.id === 'tab-' + tabId) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+            }
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchTab(btn.dataset.tab);
+                });
+            });
+        })();
     </script>
 </body>
 </html>
