@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
-    <meta name="description" content="ThinBasic.NET — .NET wrapper for the ThinBasic scripting engine (thinCore.dll). Embed scripts, inject host keywords, parse callbacks, arrays, isolation, hash tables, and module classes.">
+    <meta name="description" content="ThinBasic.NET — .NET wrapper for the ThinBasic scripting engine (thinCore.dll). Embed scripts, inject host keywords, use callbacks, arrays, and hash tables.">
     <meta name="keywords" content="ThinBasic.NET, ThinBasic, thinCore, .NET, NuGet, scripting, C#, wrapper, jiowcl">
     <meta name="author" content="Ji-Feng Tsai">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://inwazy.com/projects/thinbasicnet">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="ThinBasic.NET — .NET Wrapper for ThinBasic">
     <meta property="og:description" content="Embed ThinBasic scripts in .NET apps. Host keywords, parser helpers, arrays, isolation, hash tables, and module classes.">
-    <meta property="og:url" content="https://github.com/jiowcl/ThinBasic.NET">
+    <meta property="og:url" content="https://inwazy.com/projects/thinbasicnet">
     <meta property="og:site_name" content="ThinBasic.NET">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://inwazy.com/assets/og/thinbasicnet.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ThinBasic.NET">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ThinBasic.NET — Embed ThinBasic in .NET">
     <meta name="twitter:description" content=".NET wrapper for thinCore.dll: scripts, host keywords, parser, arrays, isolation, hash, and classes.">
     <meta name="twitter:creator" content="@jiowcl">
+    <meta name="twitter:image" content="https://inwazy.com/assets/og/thinbasicnet.png">
+    <meta name="twitter:image:alt" content="ThinBasic.NET">
 
     <title>ThinBasic.NET | .NET Wrapper for ThinBasic Scripting Engine</title>
     <!-- Tailwind CSS CDN -->
@@ -51,19 +61,50 @@
     <!-- Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "ThinBasic.NET",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Windows",
-      "description": ".NET wrapper for the ThinBasic scripting engine (thinCore.dll). Embed scripts, inject host keywords, and more.",
-      "url": "https://github.com/jiowcl/ThinBasic.NET",
-      "author": {
-        "@type": "Person",
-        "name": "Ji-Feng Tsai",
-        "url": "https://inwazy.com"
-      },
-      "license": "https://opensource.org/licenses/MIT"
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "ThinBasic.NET",
+        "description": ".NET wrapper for the ThinBasic scripting engine (thinCore.dll). Embed scripts, inject host keywords, and more.",
+        "url": "https://inwazy.com/projects/thinbasicnet",
+        "codeRepository": "https://github.com/jiowcl/ThinBasic.NET",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": {
+            "@type": "Person",
+            "name": "Ji-Feng Tsai",
+            "url": "https://inwazy.com"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Inwazy Technology",
+            "url": "https://inwazy.com/"
+        },
+        "runtimePlatform": "Windows"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://inwazy.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Projects",
+                "item": "https://inwazy.com/#projects"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "ThinBasic.NET",
+                "item": "https://inwazy.com/projects/thinbasicnet"
+            }
+        ]
     }
     </script>
 </head>
@@ -83,12 +124,23 @@
                 <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="NuGet"><i class="fas fa-cube"></i></a>
-                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
-                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" rel="noopener" class="text-slate-300 hover:text-white text-lg transition" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" rel="noopener" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="NuGet" aria-label="NuGet"><i class="fas fa-cube"></i></a>
+                <a href="https://inwazy.com" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology" aria-label="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" rel="noopener" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X" aria-label="X"><i class="fab fa-x"></i></a>
             </div>
         </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="absolute top-[72px] left-0 right-0 z-10 px-6">
+        <ol class="max-w-6xl mx-auto flex items-center gap-2 text-xs text-slate-500">
+            <li><a href="/" class="hover:text-indigo-400 transition">Home</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li><a href="/#projects" class="hover:text-indigo-400 transition">Projects</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li aria-current="page" class="text-slate-400">ThinBasic.NET</li>
+        </ol>
     </nav>
 
     <!-- Hero Section -->
@@ -125,10 +177,10 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" rel="noopener" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
                     <i class="fas fa-cube mr-2"></i>Install from NuGet
                 </a>
-                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
+                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" rel="noopener" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
                     <i class="fab fa-github mr-2"></i>View on GitHub
                 </a>
             </div>
@@ -383,21 +435,42 @@ dotnet test ThinBasic.NETTests\ThinBasic.NETTests.csproj -c Release -p:Platform=
             <h2 class="text-3xl font-bold mb-6">Script from .NET</h2>
             <p class="text-slate-400 mb-8">Install the package, target Windows x86, and embed ThinBasic in your host application in minutes.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                <a href="https://www.nuget.org/packages/ThinBasic.NET" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
                     <i class="fas fa-cube"></i>
                     <span>NuGet Package</span>
                 </a>
-                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fab fa-github text-indigo-400"></i>
                     <span>GitHub Repository</span>
                 </a>
-                <a href="https://www.thinbasic.com/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://www.thinbasic.com/" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-external-link-alt text-cyan-400"></i>
                     <span>ThinBasic Official</span>
                 </a>
-                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://inwazy.com" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-globe text-cyan-400"></i>
                     <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="py-16 px-6 border-t border-slate-800/60" aria-labelledby="related-heading">
+        <div class="max-w-6xl mx-auto">
+            <h2 id="related-heading" class="text-2xl font-bold mb-8 text-center">Related Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="/projects/oxygenbasicnet" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">OxygenBasic.NET</h3>
+                    <p class="text-sm text-slate-400">.NET wrapper for the OxygenBasic compiler.</p>
+                </a>
+                <a href="/projects/thinbasiczmq" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">ThinBasicZMQ</h3>
+                    <p class="text-sm text-slate-400">ZeroMQ (libzmq) wrapper for ThinBASIC.</p>
+                </a>
+                <a href="/projects/thinbasicnanomsg" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">ThinBasicNanoMsg</h3>
+                    <p class="text-sm text-slate-400">Nanomsg &amp; NNG wrapper for ThinBASIC.</p>
                 </a>
             </div>
         </div>
@@ -406,15 +479,16 @@ dotnet test ThinBasic.NETTests\ThinBasic.NETTests.csproj -c Release -p:Platform=
     <!-- Footer -->
     <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
         <p class="mb-2">
-            <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" class="hover:text-indigo-400 transition">ThinBasic.NET</a>
+            <a href="https://github.com/jiowcl/ThinBasic.NET" target="_blank" rel="noopener" class="hover:text-indigo-400 transition">ThinBasic.NET</a>
             · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
         </p>
         <p class="mb-2 text-slate-600">
-            ThinBasic Copyright © Eros Olmi · <a href="https://github.com/ThinBASIC" target="_blank" class="hover:text-cyan-400 transition">ThinBASIC Interpreter</a>
+            ThinBasic Copyright © Eros Olmi · <a href="https://github.com/ThinBASIC" target="_blank" rel="noopener" class="hover:text-cyan-400 transition">ThinBASIC Interpreter</a>
         </p>
         <p>
-            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+            <a href="https://inwazy.com" class="hover:text-cyan-400 transition">Inwazy Technology</a>
         </p>
+        <nav aria-label="All projects" class="mt-4 max-w-4xl mx-auto px-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs"><a href="/" class="hover:text-indigo-400 transition">Home</a><a href="/projects/zeron" class="hover:text-indigo-400 transition">Zeron</a><a href="/projects/vyrn" class="hover:text-indigo-400 transition">Vyrn</a><a href="/projects/comettextel" class="hover:text-indigo-400 transition">CometTextel</a><a href="/projects/purebasiczmq" class="hover:text-indigo-400 transition">PureBasicZMQ</a><a href="/projects/freebasiczmq" class="hover:text-indigo-400 transition">FreeBasicZMQ</a><a href="/projects/thinbasiczmq" class="hover:text-indigo-400 transition">ThinBasicZMQ</a><a href="/projects/purebasicnanomsg" class="hover:text-indigo-400 transition">PureBasicNanoMsg</a><a href="/projects/freebasicnanomsg" class="hover:text-indigo-400 transition">FreeBasicNanoMsg</a><a href="/projects/thinbasicnanomsg" class="hover:text-indigo-400 transition">ThinBasicNanoMsg</a><a href="/projects/oxygenbasicnet" class="hover:text-indigo-400 transition">OxygenBasic.NET</a></nav>
     </footer>
 
     <script>

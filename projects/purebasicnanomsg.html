@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <meta name="description" content="PureBasicNanoMsg — Nanomsg and NNG wrappers for PureBasic. Scalability protocols: PUB/SUB, REQ/REP, PUSH/PULL, Survey, Bus, PAIR — with Module APIs and x64 runtimes.">
     <meta name="keywords" content="PureBasicNanoMsg, PureBasicNNG, PureBasic, nanomsg, NNG, messaging, pubsub, wrapper, jiowcl">
     <meta name="author" content="Ji-Feng Tsai">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://inwazy.com/projects/purebasicnanomsg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="PureBasicNanoMsg — Nanomsg/NNG for PureBasic">
     <meta property="og:description" content="Nanomsg and NNG (nanomsg-next-gen) wrappers for PureBasic. Two packages, side by side — APIs are not compatible.">
-    <meta property="og:url" content="https://github.com/jiowcl/PureBasicNanoMsg">
+    <meta property="og:url" content="https://inwazy.com/projects/purebasicnanomsg">
     <meta property="og:site_name" content="PureBasicNanoMsg">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://inwazy.com/assets/og/purebasicnanomsg.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PureBasicNanoMsg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PureBasicNanoMsg — Nanomsg/NNG for PureBasic">
     <meta name="twitter:description" content="Scalability protocols in PureBasic: nanomsg (legacy) and PureBasicNNG (recommended for new work).">
     <meta name="twitter:creator" content="@jiowcl">
+    <meta name="twitter:image" content="https://inwazy.com/assets/og/purebasicnanomsg.png">
+    <meta name="twitter:image:alt" content="PureBasicNanoMsg">
 
     <title>PureBasicNanoMsg | Nanomsg &amp; NNG Wrapper for PureBasic</title>
     <!-- Tailwind CSS CDN -->
@@ -51,19 +61,50 @@
     <!-- Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "PureBasicNanoMsg",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Windows",
-      "description": "Nanomsg and NNG wrappers for the PureBasic programming language.",
-      "url": "https://github.com/jiowcl/PureBasicNanoMsg",
-      "author": {
-        "@type": "Person",
-        "name": "Ji-Feng Tsai",
-        "url": "https://inwazy.com"
-      },
-      "license": "https://opensource.org/licenses/MIT"
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "PureBasicNanoMsg",
+        "description": "Nanomsg and NNG wrappers for the PureBasic programming language.",
+        "url": "https://inwazy.com/projects/purebasicnanomsg",
+        "codeRepository": "https://github.com/jiowcl/PureBasicNanoMsg",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": {
+            "@type": "Person",
+            "name": "Ji-Feng Tsai",
+            "url": "https://inwazy.com"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Inwazy Technology",
+            "url": "https://inwazy.com/"
+        },
+        "runtimePlatform": "Windows"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://inwazy.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Projects",
+                "item": "https://inwazy.com/#projects"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "PureBasicNanoMsg",
+                "item": "https://inwazy.com/projects/purebasicnanomsg"
+            }
+        ]
     }
     </script>
 </head>
@@ -83,11 +124,22 @@
                 <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
-                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+                <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" rel="noopener" class="text-slate-300 hover:text-white text-lg transition" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://inwazy.com" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology" aria-label="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" rel="noopener" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X" aria-label="X"><i class="fab fa-x"></i></a>
             </div>
         </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="absolute top-[72px] left-0 right-0 z-10 px-6">
+        <ol class="max-w-6xl mx-auto flex items-center gap-2 text-xs text-slate-500">
+            <li><a href="/" class="hover:text-indigo-400 transition">Home</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li><a href="/#projects" class="hover:text-indigo-400 transition">Projects</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li aria-current="page" class="text-slate-400">PureBasicNanoMsg</li>
+        </ol>
     </nav>
 
     <!-- Hero Section -->
@@ -124,7 +176,7 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" rel="noopener" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
                     <i class="fab fa-github mr-2"></i>View on GitHub
                 </a>
                 <a href="#packages" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
@@ -142,7 +194,7 @@
                 <div>
                     <p class="text-amber-200/90 text-sm leading-relaxed">
                         <strong>nanomsg is no longer maintained.</strong> For new work, use the sibling package
-                        <a href="https://github.com/jiowcl/PureBasicNanoMsg/tree/main/PureBasicNNG" target="_blank" class="text-cyan-300 hover:text-cyan-200 underline">PureBasicNNG</a>
+                        <a href="https://github.com/jiowcl/PureBasicNanoMsg/tree/main/PureBasicNNG" target="_blank" rel="noopener" class="text-cyan-300 hover:text-cyan-200 underline">PureBasicNNG</a>
                         (NNG / nanomsg-next-gen). The APIs are <strong>not</strong> compatible.
                     </p>
                 </div>
@@ -183,7 +235,7 @@
                         <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Errors returned directly (no nn_errno)</li>
                         <li class="flex gap-2"><i class="fas fa-check text-cyan-400 mt-1"></i> Bundled: <code class="text-slate-300">Library/x64/nng.dll</code></li>
                     </ul>
-                    <a href="https://github.com/jiowcl/PureBasicNanoMsg/tree/main/PureBasicNNG" target="_blank" class="text-sm text-cyan-400 hover:text-cyan-300 transition">
+                    <a href="https://github.com/jiowcl/PureBasicNanoMsg/tree/main/PureBasicNNG" target="_blank" rel="noopener" class="text-sm text-cyan-400 hover:text-cyan-300 transition">
                         Browse PureBasicNNG →
                     </a>
                 </div>
@@ -378,21 +430,42 @@ PureBasicNNG/Library/x64/nng.dll</code></pre>
             <h2 class="text-3xl font-bold mb-6">Scalable Messaging in PureBasic</h2>
             <p class="text-slate-400 mb-8">Clone the repo, pick nanomsg or NNG, and start with PUB/SUB or REQ/REP. For new projects, prefer PureBasicNNG.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
                     <i class="fab fa-github"></i>
                     <span>GitHub Repository</span>
                 </a>
-                <a href="https://github.com/jiowcl/PureBasicNanoMsg/tree/main/PureBasicNNG" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://github.com/jiowcl/PureBasicNanoMsg/tree/main/PureBasicNNG" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-rocket text-cyan-400"></i>
                     <span>PureBasicNNG</span>
                 </a>
-                <a href="https://nng.nanomsg.org/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://nng.nanomsg.org/" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-external-link-alt text-indigo-400"></i>
                     <span>NNG Official</span>
                 </a>
-                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://inwazy.com" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-globe text-cyan-400"></i>
                     <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="py-16 px-6 border-t border-slate-800/60" aria-labelledby="related-heading">
+        <div class="max-w-6xl mx-auto">
+            <h2 id="related-heading" class="text-2xl font-bold mb-8 text-center">Related Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="/projects/freebasicnanomsg" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">FreeBasicNanoMsg</h3>
+                    <p class="text-sm text-slate-400">Nanomsg &amp; NNG wrapper for FreeBASIC.</p>
+                </a>
+                <a href="/projects/thinbasicnanomsg" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">ThinBasicNanoMsg</h3>
+                    <p class="text-sm text-slate-400">Nanomsg &amp; NNG wrapper for ThinBASIC.</p>
+                </a>
+                <a href="/projects/purebasiczmq" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">PureBasicZMQ</h3>
+                    <p class="text-sm text-slate-400">ZeroMQ (libzmq) wrapper for PureBasic.</p>
                 </a>
             </div>
         </div>
@@ -401,12 +474,13 @@ PureBasicNNG/Library/x64/nng.dll</code></pre>
     <!-- Footer -->
     <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
         <p class="mb-2">
-            <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" class="hover:text-indigo-400 transition">PureBasicNanoMsg</a>
+            <a href="https://github.com/jiowcl/PureBasicNanoMsg" target="_blank" rel="noopener" class="hover:text-indigo-400 transition">PureBasicNanoMsg</a>
             · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
         </p>
         <p>
-            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+            <a href="https://inwazy.com" class="hover:text-cyan-400 transition">Inwazy Technology</a>
         </p>
+        <nav aria-label="All projects" class="mt-4 max-w-4xl mx-auto px-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs"><a href="/" class="hover:text-indigo-400 transition">Home</a><a href="/projects/zeron" class="hover:text-indigo-400 transition">Zeron</a><a href="/projects/vyrn" class="hover:text-indigo-400 transition">Vyrn</a><a href="/projects/comettextel" class="hover:text-indigo-400 transition">CometTextel</a><a href="/projects/purebasiczmq" class="hover:text-indigo-400 transition">PureBasicZMQ</a><a href="/projects/freebasiczmq" class="hover:text-indigo-400 transition">FreeBasicZMQ</a><a href="/projects/thinbasiczmq" class="hover:text-indigo-400 transition">ThinBasicZMQ</a><a href="/projects/freebasicnanomsg" class="hover:text-indigo-400 transition">FreeBasicNanoMsg</a><a href="/projects/thinbasicnanomsg" class="hover:text-indigo-400 transition">ThinBasicNanoMsg</a><a href="/projects/thinbasicnet" class="hover:text-indigo-400 transition">ThinBasic.NET</a><a href="/projects/oxygenbasicnet" class="hover:text-indigo-400 transition">OxygenBasic.NET</a></nav>
     </footer>
 
     <script>

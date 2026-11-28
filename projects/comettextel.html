@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <meta name="description" content="CometTextel — A modern C++23 library for GSM SMS over serial. Clean serial abstraction, GSM 03.40 PDU encode/decode, and AT-command helpers.">
     <meta name="keywords" content="CometTextel, GSM, SMS, PDU, C++, modem, serial, AT commands, CMake, C++23, jiowcl">
     <meta name="author" content="Ji-Feng Tsai">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://inwazy.com/projects/comettextel">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="CometTextel — Modern C++ Library for GSM SMS over Serial">
     <meta property="og:description" content="Tiny, elegant, and practical. Send and receive SMS through a GSM modem with C++23, CMake, and multi-language bindings.">
-    <meta property="og:url" content="https://github.com/jiowcl/CometTextel">
+    <meta property="og:url" content="https://inwazy.com/projects/comettextel">
     <meta property="og:site_name" content="CometTextel">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://inwazy.com/assets/og/comettextel.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="CometTextel">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="CometTextel — GSM SMS over Serial">
     <meta name="twitter:description" content="A modern C++23 library for GSM SMS: PDU codec, serial layer, modem helpers, and multi-language SDKs.">
     <meta name="twitter:creator" content="@jiowcl">
+    <meta name="twitter:image" content="https://inwazy.com/assets/og/comettextel.png">
+    <meta name="twitter:image:alt" content="CometTextel">
 
     <title>CometTextel | Modern C++ Library for GSM SMS over Serial</title>
     <!-- Tailwind CSS CDN -->
@@ -51,19 +61,50 @@
     <!-- Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "CometTextel",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Windows, Linux, macOS",
-      "description": "A modern C++23 library for sending and receiving GSM SMS over serial, with PDU codec and multi-language bindings.",
-      "url": "https://github.com/jiowcl/CometTextel",
-      "author": {
-        "@type": "Person",
-        "name": "Ji-Feng Tsai",
-        "url": "https://inwazy.com"
-      },
-      "license": "https://opensource.org/licenses/MIT"
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "CometTextel",
+        "description": "A modern C++23 library for sending and receiving GSM SMS over serial, with PDU codec and multi-language bindings.",
+        "url": "https://inwazy.com/projects/comettextel",
+        "codeRepository": "https://github.com/jiowcl/CometTextel",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": {
+            "@type": "Person",
+            "name": "Ji-Feng Tsai",
+            "url": "https://inwazy.com"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Inwazy Technology",
+            "url": "https://inwazy.com/"
+        },
+        "runtimePlatform": "Windows, Linux, macOS"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://inwazy.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Projects",
+                "item": "https://inwazy.com/#projects"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "CometTextel",
+                "item": "https://inwazy.com/projects/comettextel"
+            }
+        ]
     }
     </script>
 </head>
@@ -83,11 +124,22 @@
                 <a href="#history" class="hover:text-indigo-400 transition">History</a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
-                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+                <a href="https://github.com/jiowcl/CometTextel" target="_blank" rel="noopener" class="text-slate-300 hover:text-white text-lg transition" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://inwazy.com" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology" aria-label="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" rel="noopener" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X" aria-label="X"><i class="fab fa-x"></i></a>
             </div>
         </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="absolute top-[72px] left-0 right-0 z-10 px-6">
+        <ol class="max-w-6xl mx-auto flex items-center gap-2 text-xs text-slate-500">
+            <li><a href="/" class="hover:text-indigo-400 transition">Home</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li><a href="/#projects" class="hover:text-indigo-400 transition">Projects</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li aria-current="page" class="text-slate-400">CometTextel</li>
+        </ol>
     </nav>
 
     <!-- Hero Section -->
@@ -124,7 +176,7 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                <a href="https://github.com/jiowcl/CometTextel" target="_blank" rel="noopener" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
                     <i class="fab fa-github mr-2"></i>View on GitHub
                 </a>
                 <a href="#example" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
@@ -326,7 +378,7 @@ target_link_libraries(app PRIVATE
             </div>
 
             <p class="text-center text-sm text-slate-500 mt-8">
-                <a href="https://github.com/jiowcl/CometTextel/blob/main/doc/getting-started.md" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition">Getting Started Guide →</a>
+                <a href="https://github.com/jiowcl/CometTextel/blob/main/doc/getting-started.md" target="_blank" rel="noopener" class="text-indigo-400 hover:text-indigo-300 transition">Getting Started Guide →</a>
                 &nbsp;·&nbsp;
                 Download CI Artifacts or Release packages, then include &amp; link.
             </p>
@@ -350,7 +402,7 @@ target_link_libraries(app PRIVATE
 
             <div class="mt-12 bg-cardbg border border-slate-800 p-6 rounded-2xl text-center">
                 <p class="text-sm text-slate-400 mb-2">Official Commercial Partner</p>
-                <a href="https://kjprotech.com/en-us/product/textel-pro" target="_blank" class="text-lg font-semibold text-indigo-300 hover:text-indigo-200 transition">
+                <a href="https://kjprotech.com/en-us/product/textel-pro" target="_blank" rel="noopener" class="text-lg font-semibold text-indigo-300 hover:text-indigo-200 transition">
                     KJPro Technology — Textel Pro
                 </a>
                 <p class="text-sm text-slate-500 mt-2">Enterprise distribution, custom integration, and dedicated support</p>
@@ -364,15 +416,15 @@ target_link_libraries(app PRIVATE
             <h2 class="text-3xl font-bold mb-6">Send SMS from Your Code</h2>
             <p class="text-slate-400 mb-8">Clone the repo, link the library, and talk to any PDU-mode GSM modem — in C++, C#, Python, or BASIC.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                <a href="https://github.com/jiowcl/CometTextel" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
                     <i class="fab fa-github"></i>
                     <span>GitHub Repository</span>
                 </a>
-                <a href="https://github.com/jiowcl/CometTextel/releases" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://github.com/jiowcl/CometTextel/releases" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-download text-indigo-400"></i>
                     <span>Releases</span>
                 </a>
-                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://inwazy.com" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-globe text-cyan-400"></i>
                     <span>Inwazy Technology</span>
                 </a>
@@ -383,15 +435,37 @@ target_link_libraries(app PRIVATE
         </div>
     </section>
 
+    <!-- Related Projects -->
+    <section class="py-16 px-6 border-t border-slate-800/60" aria-labelledby="related-heading">
+        <div class="max-w-6xl mx-auto">
+            <h2 id="related-heading" class="text-2xl font-bold mb-8 text-center">Related Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="/projects/zeron" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">Zeron</h3>
+                    <p class="text-sm text-slate-400">Cloud-free Windows remote automation via NetMQ &amp; JSON-RPC.</p>
+                </a>
+                <a href="/projects/vyrn" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">Vyrn</h3>
+                    <p class="text-sm text-slate-400">Tiny, Lua-inspired programming language built in PureBasic.</p>
+                </a>
+                <a href="/projects/thinbasicnet" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">ThinBasic.NET</h3>
+                    <p class="text-sm text-slate-400">.NET wrapper for the ThinBasic scripting engine.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
         <p class="mb-2">
-            <a href="https://github.com/jiowcl/CometTextel" target="_blank" class="hover:text-indigo-400 transition">CometTextel</a>
+            <a href="https://github.com/jiowcl/CometTextel" target="_blank" rel="noopener" class="hover:text-indigo-400 transition">CometTextel</a>
             · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
         </p>
         <p>
-            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+            <a href="https://inwazy.com" class="hover:text-cyan-400 transition">Inwazy Technology</a>
         </p>
+        <nav aria-label="All projects" class="mt-4 max-w-4xl mx-auto px-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs"><a href="/" class="hover:text-indigo-400 transition">Home</a><a href="/projects/zeron" class="hover:text-indigo-400 transition">Zeron</a><a href="/projects/vyrn" class="hover:text-indigo-400 transition">Vyrn</a><a href="/projects/purebasiczmq" class="hover:text-indigo-400 transition">PureBasicZMQ</a><a href="/projects/freebasiczmq" class="hover:text-indigo-400 transition">FreeBasicZMQ</a><a href="/projects/thinbasiczmq" class="hover:text-indigo-400 transition">ThinBasicZMQ</a><a href="/projects/purebasicnanomsg" class="hover:text-indigo-400 transition">PureBasicNanoMsg</a><a href="/projects/freebasicnanomsg" class="hover:text-indigo-400 transition">FreeBasicNanoMsg</a><a href="/projects/thinbasicnanomsg" class="hover:text-indigo-400 transition">ThinBasicNanoMsg</a><a href="/projects/thinbasicnet" class="hover:text-indigo-400 transition">ThinBasic.NET</a><a href="/projects/oxygenbasicnet" class="hover:text-indigo-400 transition">OxygenBasic.NET</a></nav>
     </footer>
 
     <script>

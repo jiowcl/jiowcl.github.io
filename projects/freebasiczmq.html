@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <meta name="description" content="FreeBasicZMQ — ZeroMQ (libzmq) wrapper for FreeBASIC. PUB/SUB, REQ/REP, CURVE, PLAIN, Poll, Proxy, Monitor — procedural and OOP Module examples.">
     <meta name="keywords" content="FreeBasicZMQ, FreeBASIC, ZeroMQ, libzmq, ZMQ, messaging, pubsub, wrapper, jiowcl">
     <meta name="author" content="Ji-Feng Tsai">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://inwazy.com/projects/freebasiczmq">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="FreeBasicZMQ — ZeroMQ Wrapper for FreeBASIC">
     <meta property="og:description" content="Full libzmq binding for FreeBASIC: messaging patterns, CURVE/PLAIN security, poll, proxy, and Module OOP twins.">
-    <meta property="og:url" content="https://github.com/jiowcl/FreeBasicZMQ">
+    <meta property="og:url" content="https://inwazy.com/projects/freebasiczmq">
     <meta property="og:site_name" content="FreeBasicZMQ">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://inwazy.com/assets/og/freebasiczmq.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FreeBasicZMQ">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FreeBasicZMQ — ZeroMQ for FreeBASIC">
     <meta name="twitter:description" content="ZMQ wrapper for FreeBASIC: PUB/SUB, REQ/REP, CURVE, Poll, Proxy — procedural + Module examples.">
     <meta name="twitter:creator" content="@jiowcl">
+    <meta name="twitter:image" content="https://inwazy.com/assets/og/freebasiczmq.png">
+    <meta name="twitter:image:alt" content="FreeBasicZMQ">
 
     <title>FreeBasicZMQ | ZeroMQ Wrapper for FreeBASIC</title>
     <!-- Tailwind CSS CDN -->
@@ -51,19 +61,50 @@
     <!-- Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "FreeBasicZMQ",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Windows",
-      "description": "ZeroMQ (libzmq) wrapper for the FreeBASIC programming language.",
-      "url": "https://github.com/jiowcl/FreeBasicZMQ",
-      "author": {
-        "@type": "Person",
-        "name": "Ji-Feng Tsai",
-        "url": "https://inwazy.com"
-      },
-      "license": "https://opensource.org/licenses/MIT"
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "FreeBasicZMQ",
+        "description": "ZeroMQ (libzmq) wrapper for the FreeBASIC programming language.",
+        "url": "https://inwazy.com/projects/freebasiczmq",
+        "codeRepository": "https://github.com/jiowcl/FreeBasicZMQ",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": {
+            "@type": "Person",
+            "name": "Ji-Feng Tsai",
+            "url": "https://inwazy.com"
+        },
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Inwazy Technology",
+            "url": "https://inwazy.com/"
+        },
+        "runtimePlatform": "Windows"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://inwazy.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Projects",
+                "item": "https://inwazy.com/#projects"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "FreeBasicZMQ",
+                "item": "https://inwazy.com/projects/freebasiczmq"
+            }
+        ]
     }
     </script>
 </head>
@@ -83,11 +124,22 @@
                 <a href="#get-started" class="hover:text-indigo-400 transition">Get Started</a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="text-slate-300 hover:text-white text-lg transition" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://inwazy.com" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology"><i class="fas fa-globe"></i></a>
-                <a href="https://x.com/jiowcl" target="_blank" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X"><i class="fab fa-x"></i></a>
+                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" rel="noopener" class="text-slate-300 hover:text-white text-lg transition" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://inwazy.com" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="Inwazy Technology" aria-label="Inwazy Technology"><i class="fas fa-globe"></i></a>
+                <a href="https://x.com/jiowcl" target="_blank" rel="noopener" class="text-slate-300 hover:text-indigo-400 text-lg transition" title="X" aria-label="X"><i class="fab fa-x"></i></a>
             </div>
         </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="absolute top-[72px] left-0 right-0 z-10 px-6">
+        <ol class="max-w-6xl mx-auto flex items-center gap-2 text-xs text-slate-500">
+            <li><a href="/" class="hover:text-indigo-400 transition">Home</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li><a href="/#projects" class="hover:text-indigo-400 transition">Projects</a></li>
+            <li aria-hidden="true">&rsaquo;</li>
+            <li aria-current="page" class="text-slate-400">FreeBasicZMQ</li>
+        </ol>
     </nav>
 
     <!-- Hero Section -->
@@ -124,7 +176,7 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
+                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" rel="noopener" class="px-8 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition">
                     <i class="fab fa-github mr-2"></i>View on GitHub
                 </a>
                 <a href="#example" class="px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium border border-slate-700 transition">
@@ -368,21 +420,42 @@ FreeBasicZMQ/Library/x86/libzmq.dll
             <h2 class="text-3xl font-bold mb-6">Message from FreeBASIC</h2>
             <p class="text-slate-400 mb-8">Clone the repo, point at libzmq, and start with PUB/SUB or REQ/REP — procedural or Module style.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
+                <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-lg shadow-indigo-600/30 transition flex items-center space-x-2">
                     <i class="fab fa-github"></i>
                     <span>GitHub Repository</span>
                 </a>
-                <a href="https://zeromq.org/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://zeromq.org/" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-indigo-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-external-link-alt text-indigo-400"></i>
                     <span>ZeroMQ Official</span>
                 </a>
-                <a href="https://www.freebasic.net/" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://www.freebasic.net/" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-external-link-alt text-cyan-400"></i>
                     <span>FreeBASIC</span>
                 </a>
-                <a href="https://inwazy.com" target="_blank" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
+                <a href="https://inwazy.com" class="px-6 py-3 rounded-xl bg-cardbg border border-slate-700 hover:border-cyan-500 text-slate-200 transition flex items-center space-x-2">
                     <i class="fas fa-globe text-cyan-400"></i>
                     <span>Inwazy Technology</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="py-16 px-6 border-t border-slate-800/60" aria-labelledby="related-heading">
+        <div class="max-w-6xl mx-auto">
+            <h2 id="related-heading" class="text-2xl font-bold mb-8 text-center">Related Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="/projects/purebasiczmq" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">PureBasicZMQ</h3>
+                    <p class="text-sm text-slate-400">ZeroMQ (libzmq) wrapper for PureBasic.</p>
+                </a>
+                <a href="/projects/thinbasiczmq" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">ThinBasicZMQ</h3>
+                    <p class="text-sm text-slate-400">ZeroMQ (libzmq) wrapper for ThinBASIC.</p>
+                </a>
+                <a href="/projects/freebasicnanomsg" class="block bg-cardbg border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition">
+                    <h3 class="text-lg font-bold text-white mb-2">FreeBasicNanoMsg</h3>
+                    <p class="text-sm text-slate-400">Nanomsg &amp; NNG wrapper for FreeBASIC.</p>
                 </a>
             </div>
         </div>
@@ -391,12 +464,13 @@ FreeBasicZMQ/Library/x86/libzmq.dll
     <!-- Footer -->
     <footer class="py-8 border-t border-slate-800 text-center text-sm text-slate-500">
         <p class="mb-2">
-            <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" class="hover:text-indigo-400 transition">FreeBasicZMQ</a>
+            <a href="https://github.com/jiowcl/FreeBasicZMQ" target="_blank" rel="noopener" class="hover:text-indigo-400 transition">FreeBasicZMQ</a>
             · MIT License · Copyright © <span id="year"></span> Ji-Feng Tsai
         </p>
         <p>
-            <a href="https://inwazy.com" target="_blank" class="hover:text-cyan-400 transition">Inwazy Technology</a>
+            <a href="https://inwazy.com" class="hover:text-cyan-400 transition">Inwazy Technology</a>
         </p>
+        <nav aria-label="All projects" class="mt-4 max-w-4xl mx-auto px-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs"><a href="/" class="hover:text-indigo-400 transition">Home</a><a href="/projects/zeron" class="hover:text-indigo-400 transition">Zeron</a><a href="/projects/vyrn" class="hover:text-indigo-400 transition">Vyrn</a><a href="/projects/comettextel" class="hover:text-indigo-400 transition">CometTextel</a><a href="/projects/purebasiczmq" class="hover:text-indigo-400 transition">PureBasicZMQ</a><a href="/projects/thinbasiczmq" class="hover:text-indigo-400 transition">ThinBasicZMQ</a><a href="/projects/purebasicnanomsg" class="hover:text-indigo-400 transition">PureBasicNanoMsg</a><a href="/projects/freebasicnanomsg" class="hover:text-indigo-400 transition">FreeBasicNanoMsg</a><a href="/projects/thinbasicnanomsg" class="hover:text-indigo-400 transition">ThinBasicNanoMsg</a><a href="/projects/thinbasicnet" class="hover:text-indigo-400 transition">ThinBasic.NET</a><a href="/projects/oxygenbasicnet" class="hover:text-indigo-400 transition">OxygenBasic.NET</a></nav>
     </footer>
 
     <script>
